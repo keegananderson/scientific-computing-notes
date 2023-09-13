@@ -3,27 +3,38 @@
 
 format: jb-book
 root: index
-options:
-  numbered: True
-chapters:
-#- file: markdown
-#- file: notebooks
-#- file: markdown-notebooks
-#- file: mymarkdownfile
-- file: chapters/introduction
-  sections:
-    - file: chapters/introduction/course_outline
-    - file: chapters/introduction/learning_outcomes
-    - file: chapters/introduction/resources
-    - file: chapters/introduction/why_scientific_computing
-- file: chapters/notation
-- file: computer_arithmetic
-  sections:
-    - file: chapters/computer_arithmetic/representation
-    - file: chapters/computer_arithmetic/binary_numbers
-    - file: chapters/computer_arithmetic/floating-point_numbers
-    - file: chapters/computer_arithmetic/accuracy
-- file: linear_algebra_revision
-- file: linear_systems
-- file: least_squares
-- file: eigenvalue_problems
+#options:
+#  numbered: True
+parts:
+  - caption: Theory
+    numbered: True
+    maxdepth: 2
+    chapters:
+    #- file: markdown
+    #- file: notebooks
+    #- file: markdown-notebooks
+    #- file: mymarkdownfile
+    - file: content/theory/introduction
+      sections:
+        - file: content/theory/introduction/course_outline
+        - file: content/theory/introduction/learning_outcomes
+        - file: content/theory/introduction/resources
+        - file: content/theory/introduction/why_scientific_computing
+    - file: content/theory/notation
+    - file: content/theory/computer_arithmetic
+      sections:
+        - file: content/theory/computer_arithmetic/representation
+        - file: content/theory/computer_arithmetic/binary_numbers
+        - file: content/theory/computer_arithmetic/floating-point_numbers
+        - file: content/theory/computer_arithmetic/accuracy
+    - file: content/theory/revision
+    - file: content/theory/linear_systems
+    - file: content/theory/least_squares
+    - file: content/theory/eigenvalue_problems
+
+  - caption: Programming
+    numbered: True
+    chapters:
+      - file: content/programming/introduction
+        sections:
+          - file: content/programming/introduction/installation

@@ -1,0 +1,716 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>3.1. b-adic representation of numbers &#8212; Scientific Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/theory/computer_arithmetic/representation';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="3.2. Binary numbers and binary arithmetic" href="binary_numbers.html" />
+    <link rel="prev" title="3. Computer Arithmetic" href="../computer_arithmetic.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/UJ_Logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../_static/UJ_Logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../index.html">
+                    Welcome to Scientific Computing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Theory</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../introduction.html">1. Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/course_outline.html">1.1. Course outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/learning_outcomes.html">1.2. Learning outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/resources.html">1.3. Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/why_scientific_computing.html">1.4. Why Scientific Computing?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../notation.html">2. Notation</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../computer_arithmetic.html">3. Computer Arithmetic</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.1. <em>b</em>-adic representation of numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binary_numbers.html">3.2. Binary numbers and binary arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="floating-point_numbers.html">3.3. Floating-point numbers and floating-point arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accuracy.html">3.4. Accuracy and stability</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../revision.html">4. Revision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linear_systems.html">5. Linear Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../least_squares.html">6. Linear Least Squares</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eigenvalue_problems.html">7. Eigenvalue Problems</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../programming/introduction.html">1. Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../programming/introduction/installation.html">1.1. Installation</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/content/theory/computer_arithmetic/representation.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>b-adic representation of numbers</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-systems">3.1.1. Number systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#positional-notation">3.1.2. Positional notation</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="b-adic-representation-of-numbers">
+<h1><span class="section-number">3.1. </span><em>b</em>-adic representation of numbers<a class="headerlink" href="#b-adic-representation-of-numbers" title="Permalink to this heading">#</a></h1>
+<section id="number-systems">
+<h2><span class="section-number">3.1.1. </span>Number systems<a class="headerlink" href="#number-systems" title="Permalink to this heading">#</a></h2>
+<p>Any algorithm in Scientific Computing, at its core, relies on the representation
+of numbers on a computing device and then understanding how arithmetic and/or
+algebraic operations are impacted by the specific representation.</p>
+<p>Mathematically, numbers are elements of any of the following sets:
+$\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \subset \mathbb{C}$.</p>
+<p>These sets usually have some algebraic structure imposed on them in the form of
+binary operations and certain axiomatic properties.
+In this context, numbers are then represented using variables, for example, $x
+\in \mathbb{R}$.
+However, computing devices usually cannot interpret these symbolic
+representation and the operations that can be performed on these numbers.</p>
+<p>Numbers may also be represented via number systems.
+Number systems are writing systems used to express numbers of a given set
+using digits and/or mathematical notation.</p>
+<aside class="topic">
+<p class="topic-title">Definition</p>
+<p>A <em>number system</em> is a set which consists of a finite quantity of unique
+symbols.
+A symbol of a number system is called a <em>numeral</em>.
+A number system should</p>
+<ul class="simple">
+<li><p>be able to represent a given set of numbers fully,</p></li>
+<li><p>represent each number in the set of numbers uniquely, and</p></li>
+<li><p>reflect any algebraic or arithmetic structure imposed on the set.</p></li>
+</ul>
+</aside>
+<aside class="topic">
+<p class="topic-title">Definition</p>
+<p>Let $b \in \mathbb{N}$.
+A <em>base-$b$</em> number system consists of $b$ numerals which correspond to
+$0$ and the first $b-1$ natural numbers, that is, ${0,1,2,\dotsc,b-1}$.
+The number $b$ is called the <em>radix</em> of the number system.</p>
+</aside>
+<p>Some well-known examples of number systems are:</p>
+<ul class="simple">
+<li><p>The <em>decimal number system</em> is a base-$10$ numeral system with
+base symbols $\mathbb{D} \equiv {0,1,2,3,4,5,6,7,8,9}$.</p></li>
+<li><p>The base-$2$ number system consisting of the numerals $\mathbb{B} \equiv
+{0,1}$ is called the <em>binary number system</em>.</p></li>
+<li><p>The base-$16$ number system $\mathbb{H}$ consisting of the numerals
+${0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F}$
+is called the <em>hexadecimal number system</em>.</p></li>
+<li><p>The base-$8$ number system $\mathbb{O}$ with ${0,1,2,3,4,5,6,7}$
+as its base symbols is called the <em>octal number system</em>.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Our numerals must respect some type of ordering, which is
+implied by the correspondence between the numerals of the number system to
+the natural numbers.</p>
+</div>
+<p>An example of a symbolic number system is the set ${\lambda, \mu, \phi}$, with
+the correspondence
+\begin{equation*}
+\lambda  \to 0, \quad \mu \to 1, \quad \phi \to 2,
+\end{equation*}
+which implies $\lambda &lt; \mu &lt; \phi$.</p>
+</section>
+<section id="positional-notation">
+<h2><span class="section-number">3.1.2. </span>Positional notation<a class="headerlink" href="#positional-notation" title="Permalink to this heading">#</a></h2>
+<p>From our last example, with the number system ${\lambda, \mu, \phi}$,  we see
+that we can represent the numbers $0$, $1$, and $2$ uniquely (as required per
+definition).</p>
+<p>But what if we want to represent $3$, $4$, $5$, etc?</p>
+<p>Generally, only the first $b - 1$ natural numbers and zero may be represented
+using the numerals in a base-$b$ number system.
+The problem then is to represent numbers larger (or smaller in the sense of
+fractions or negative numbers) than those that may be representated by the base
+numerals.</p>
+<p>We would either have to</p>
+<ul class="simple">
+<li><p>introduce more symbols, which could lead to an infinite
+number of symbols since the natural numbers $\mathbb{N}$ is an infinite set
+(which contradicts our definition of a number system), or</p></li>
+<li><p>find a different notational representation of numbers using a finite set of
+numerals in a meaningful manner.</p></li>
+</ul>
+<p>The most well-known method of representation is the so-called <em>positional
+notation</em>, where significance is attached to a numeral depending on where it
+appears in relation to other numerals.</p>
+<p>Suppose that $x$ is a natural number, that is, $x \in \mathbb{N}_0$.
+It can be shown, via induction, that each number $n$ may be represented in
+a base-$b$ number system as</p>
+<div class="math notranslate nohighlight" id="equation-eqn-positional-representation">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-eqn-positional-representation" title="Permalink to this equation">#</a></span>\[  x = c_mb^m + c_{m-1}b^{m-1} + \dotsb + c_2b^2 + c_1b^1 + c_0b^0,\]</div>
+<p>where $c_j \in {0, 1, \dotsc, b-1}$ with $j \in {0,1,2,\dotsc,m}$, $c_m \neq
+0$ and $b^0 = 1$.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The coefficients $c_j$ are called <em>digits</em>.
+It is borrowd from the Latin word <em>digitus</em>, referring to a “finger,
+toe, or finger’s breadth as a unit of measure”, with fingers or
+toes being one of humanity’s first counting aides.</p>
+</div>
+<p>The representation <a class="reference internal" href="#equation-eqn-positional-representation">(3.1)</a> may be shortened to the
+notation</p>
+<div class="math notranslate nohighlight" id="equation-eqn-positional-notation">
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-eqn-positional-notation" title="Permalink to this equation">#</a></span>\[  n = c_mc_{m-1}\cdots c_2c_1c_0\]</div>
+<p>which is the most common notation when we represent numbers.</p>
+<p>The representation <a class="reference internal" href="#equation-eqn-positional-notation">(3.2)</a> is read right-to-left, starting
+from $c_0$ (called the <em>least-significant digit</em>) and ending with $c_m$
+(called the <em>most-significant digit</em>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Numbers in positional notation are read from right to left in most Western
+cultures and societies (while regular text is read from left to right)
+However, there are cultures and societies which do not follow this convention.
+For example, some Asian cultures use a writing system that writes text
+vertically, from top to bottom, and from right to left.</p>
+</div>
+<p>Note that numbers are always read from right to left in the notation
+\eqref{eqn:positional-notation}, whereas the sums in
+\eqref{eqn:positional-representation} are commutative and could have been
+equivalently written as
+[
+n = c_0 + c_1b^1 + \dotsb + c_{m-1}b^{m-1} + c_mb^m.
+]
+The strictness of the order of the numerals in \eqref{eqn:positional-notation}
+becomes important when implementing number representations on the computer.</p>
+<aside class="topic">
+<p class="topic-title">Example</p>
+<p>The number $456$, in the decimal number system, may be written as
+$$
+456 = 4 \times 10^2 + 5 \times 10^1 + 6 \times 10^0.
+$$</p>
+</aside>
+<aside class="topic">
+<p class="topic-title">Example</p>
+<p>The number $23$ (in decimal) has the binary representation $10111$, since
+\begin{align*}
+10111 &amp;= 1 \times 2^4 + 0 \times 2^3 + 1 \times 2^2 + 1 \times 2^1 + 1
+\times 2^0 \
+&amp;= 1 \times 16 + 0 \times 8 + 1 \times 4 + 1 \times 2 + 1 \times 1 \
+&amp;= 16 + 4 + 2 + 1 \
+&amp;= 23
+\end{align*}</p>
+</aside>
+<p>As this previous example has shown, confusion might arise in reading number
+representations. The representation $10111$ is the number $23$ in binary, but
+also the number $10111$ in the decimal number system.
+We distinguish the representation of the number by writing the base as a
+subscript after the representation, that is, $n_b$ where $n$ is the number and
+$b$ is the base of the specific number system.
+Thus, in the last example, we could write $23_{10} = 10111_{2}$ which clarifies
+that $10111$ is the binary representation of the number $23$ in the decimal
+number system, and not the number $10111$ in the decimal number system.
+Since the decimal number system is the most widely used, the subscript is often
+not written for decimal numbers.</p>
+<p>\section{Base conversions}
+Conversion from decimal to any of the other important number systems (binary,
+hexadecimal, octal) are done via repeated integer division.
+Recall that any positive integer $n$ may be represented as $n = q \times b + r$
+where $q$ is a positive integer called the \emph{quotient} and $r$ is a positive
+integer called the \emph{remainder}.
+The algorithm is as follows:
+\begin{enumerate}[noitemsep, label=(\roman*), ref=\roman*, align=right]
+\item divide the decimal number successively by $b$,
+\item the remainders of the division are the coefficients of $b^0,\ b^1,<br />
+b^2,\ \dotsc$ (in that order).
+\end{enumerate}
+Conversion from a number system (binary, hexadecimal, octal) to decimal is done
+by writing the number in positional representation
+\eqref{eqn:positional-representation} and evaluating accordingly.</p>
+<aside class="topic">
+<p class="topic-title">Example</p>
+<p>Consider $456_{10}$.
+Then
+[
+\begin{array}{c|c|c|c|c}
+j\ \mbox{(step)} &amp; n\ \mbox{(number)} &amp; q\ \mbox{(quotient)} &amp; r<br />
+\mbox{(remainder)} &amp; c_j\ \mbox{(coefficient of}\ 2^j) \
+\hline
+0 &amp; 456 &amp; 228 &amp; 0 &amp; 0 \
+1 &amp; 228 &amp; 114 &amp; 0 &amp; 0 \
+2 &amp; 114 &amp; 57 &amp; 0 &amp; 0 \
+3 &amp; 57 &amp; 28 &amp; 1 &amp; 1 \
+4 &amp; 28 &amp; 14 &amp; 0 &amp; 0 \
+5 &amp; 14 &amp; 7 &amp; 0 &amp; 0 \
+6 &amp; 7 &amp; 3 &amp; 1 &amp; 1 \
+7 &amp; 3 &amp; 1 &amp; 1 &amp; 1 \
+8 &amp; 1 &amp; 0 &amp; 1 &amp; 1
+\end{array}
+]</p>
+<p>Therefore, $456_{10} = 111001000_{2}$.</p>
+</aside>
+<aside class="topic">
+<p class="topic-title">Example</p>
+<p>Consider $456_{10}$.
+Then
+[
+\begin{array}{c|c|c|c|c}
+j\ \mbox{(step)} &amp; n\ \mbox{(number)} &amp; q\ \mbox{(quotient)} &amp; r<br />
+\mbox{(remainder)} &amp; c_j\ \mbox{(coefficient of}\ 16^j) \
+\hline
+0 &amp; 456 &amp; 28 &amp; 8 &amp; 8 \
+1 &amp; 28 &amp; 1 &amp; 12 &amp; C \
+2 &amp; 1 &amp; 0 &amp; 1 &amp; 1
+\end{array}
+]
+Therefore, $456_{10} = 1C8_{16}$.</p>
+</aside>
+<aside class="topic">
+<p class="topic-title">Example</p>
+<p>Consider $456_{10}$.
+Then
+[
+\begin{array}{c|c|c|c|c}
+j\ \mbox{(step)} &amp; n\ \mbox{(number)} &amp; q\ \mbox{(quotient)} &amp; r<br />
+\mbox{(remainder)} &amp; c_j\ \mbox{(coefficient of}\ 8^j) \
+\hline
+0 &amp; 456 &amp; 57 &amp; 0 &amp; 0 \
+1 &amp; 57 &amp; 7 &amp; 1 &amp; 1 \
+2 &amp; 7 &amp; 0 &amp; 7 &amp; 7
+\end{array}
+]
+Therefore, $456_{10} = 710_{8}$.</p>
+</aside>
+<aside class="topic">
+<p class="topic-title">Example</p>
+<p>Consider $10101010_2$.
+Then
+\begin{align*}
+10101010_2 &amp;= 1 \times 2^7 + 0 \times 2^6 + 1 \times 2^5 + 0 \times 2^4 + 1
+\times 2^3 + 0 \times 2^2 + 1 \times 2^1 + 0 \times 2^0 \
+&amp;= 128 + 32 + 8 + 2 \
+&amp;= 170_{10}
+\end{align*}</p>
+</aside>
+<aside class="topic">
+<p class="topic-title">Example</p>
+<p>Consider $BC19_{16}$.
+Then
+\begin{align*}
+BC19_{16} &amp;= B \times 16^3 + C \times 16^2 + 1 \times 16^1 + 9 \times 16^0
+\
+&amp;= 11 \times 4096 + 12 \times 256 + 16 + 9 \
+&amp;= 45056 + 3072 + 16 + 9 \
+&amp;= 48153_{10}
+\end{align*}</p>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/theory/computer_arithmetic"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../computer_arithmetic.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Computer Arithmetic</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="binary_numbers.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3.2. </span>Binary numbers and binary arithmetic</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-systems">3.1.1. Number systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#positional-notation">3.1.2. Positional notation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Keegan D. Anderson
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
