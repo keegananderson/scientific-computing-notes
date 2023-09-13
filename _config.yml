@@ -35,3 +35,8 @@ parse:
   myst_enable_extensions:
     - amsmath
     - dollarmath
+
+# Sphinx options
+sphinx:
+  config:
+    mathjax_path: https://cdn.jsdelivr.net/npg/mathjax@3/es5/tex-mml-chtml.js

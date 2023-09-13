@@ -3,13 +3,26 @@
 
 format: jb-book
 root: index
+options:
+  numbered: True
 chapters:
 #- file: markdown
 #- file: notebooks
 #- file: markdown-notebooks
 #- file: mymarkdownfile
-- file: introduction
+- file: chapters/introduction
+  sections:
+    - file: chapters/introduction/course_outline
+    - file: chapters/introduction/learning_outcomes
+    - file: chapters/introduction/resources
+    - file: chapters/introduction/why_scientific_computing
+- file: chapters/notation
 - file: computer_arithmetic
+  sections:
+    - file: chapters/computer_arithmetic/representation
+    - file: chapters/computer_arithmetic/binary_numbers
+    - file: chapters/computer_arithmetic/floating-point_numbers
+    - file: chapters/computer_arithmetic/accuracy
 - file: linear_algebra_revision
 - file: linear_systems
 - file: least_squares
