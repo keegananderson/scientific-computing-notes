@@ -1,0 +1,16 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: index
+chapters:
+#- file: markdown
+#- file: notebooks
+#- file: markdown-notebooks
+#- file: mymarkdownfile
+- file: introduction
+- file: computer_arithmetic
+- file: linear_algebra_revision
+- file: linear_systems
+- file: least_squares
+- file: eigenvalue_problems
