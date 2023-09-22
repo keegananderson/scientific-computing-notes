@@ -1,1 +1,4 @@
-# Eigenvalue Problems
+# Lecture 9: Eigenvalue Problems
+
+```{tableofcontents}
+```

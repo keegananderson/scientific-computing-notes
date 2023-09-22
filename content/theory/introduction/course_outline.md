@@ -13,8 +13,12 @@ be subject to change before the course commences or as the course progresses.
     * $b$-adic representation of numbers
     * Binary numbers and binary arithmetic
     * Floating-point numbers and floating-point arithmetic
-    * Accuracy and stability
+* Accuracy and stability
 * Linear Systems
+    * Revision
+    * Solution Methods
+    * Gaussian Elimination
+    * Pivoting
 * Linear Least Squares
 * Eigenvalue Problems
 * Python Programming Language

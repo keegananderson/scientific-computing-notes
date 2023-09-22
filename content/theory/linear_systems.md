@@ -1,4 +1,4 @@
-# Linear Systems
+# Lecture 4: Linear Systems
 
 Many relationships in nature may be represented linearly, and often more complex
 mathematical problems are approximated linearly.

@@ -7,7 +7,7 @@ root: index
 #  numbered: True
 parts:
   - caption: Theory
-    numbered: True
+    #numbered: True
     maxdepth: 2
     chapters:
     #- file: markdown
@@ -20,17 +20,30 @@ parts:
         - file: content/theory/introduction/learning_outcomes
         - file: content/theory/introduction/resources
         - file: content/theory/introduction/why_scientific_computing
-    - file: content/theory/notation
+        - file: content/theory/introduction/notation
     - file: content/theory/computer_arithmetic
       sections:
         - file: content/theory/computer_arithmetic/representation
         - file: content/theory/computer_arithmetic/binary_numbers
         - file: content/theory/computer_arithmetic/floating-point_numbers
-        - file: content/theory/computer_arithmetic/accuracy
-    - file: content/theory/revision
+    - file: content/theory/accuracy
+      sections:
+        - file: content/theory/accuracy/error
+        - file: content/theory/accuracy/floating-point_error
+
     - file: content/theory/linear_systems
+      sections:
+        - file: content/theory/linear_systems/revision
+        - file: content/theory/linear_systems/gaussian_elimination
+        - file: content/theory/linear_systems/pivoting
+    - file: content/theory/lu_decomposition
+    - file: content/theory/lu_stability
     - file: content/theory/least_squares
+    - file: content/theory/qr_decomposition
     - file: content/theory/eigenvalue_problems
+    - file: content/theory/singular_value_decomposition
+    - file: content/theory/matrix_functions
+    - file: content/theory/matrix_exponential
 
   - caption: Programming
     numbered: True

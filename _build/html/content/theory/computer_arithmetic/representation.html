@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>3.1. b-adic representation of numbers &#8212; Scientific Computing</title>
+    <title>b-adic representation of numbers &#8212; Scientific Computing</title>
   
   
   
@@ -61,12 +61,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/theory/computer_arithmetic/representation';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="3.2. Binary numbers and binary arithmetic" href="binary_numbers.html" />
-    <link rel="prev" title="3. Computer Arithmetic" href="../computer_arithmetic.html" />
+    <link rel="next" title="Binary numbers and binary arithmetic" href="binary_numbers.html" />
+    <link rel="prev" title="Lecture 2: Computer Arithmetic" href="../computer_arithmetic.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -159,29 +160,41 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Theory</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../introduction.html">1. Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../introduction/course_outline.html">1.1. Course outline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../introduction/learning_outcomes.html">1.2. Learning outcomes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../introduction/resources.html">1.3. Resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../introduction/why_scientific_computing.html">1.4. Why Scientific Computing?</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../introduction.html">Lecture 1: Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/course_outline.html">Course outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/learning_outcomes.html">Learning outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/resources.html">Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/why_scientific_computing.html">Why Scientific Computing?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/notation.html">Notation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../notation.html">2. Notation</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../computer_arithmetic.html">3. Computer Arithmetic</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.1. <em>b</em>-adic representation of numbers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="binary_numbers.html">3.2. Binary numbers and binary arithmetic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="floating-point_numbers.html">3.3. Floating-point numbers and floating-point arithmetic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="accuracy.html">3.4. Accuracy and stability</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../computer_arithmetic.html">Lecture 2: Computer Arithmetic</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"><em>b</em>-adic representation of numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binary_numbers.html">Binary numbers and binary arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="floating-point_numbers.html">Floating-point numbers and floating-point arithmetic</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../revision.html">4. Revision</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../linear_systems.html">5. Linear Systems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../least_squares.html">6. Linear Least Squares</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../eigenvalue_problems.html">7. Eigenvalue Problems</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../accuracy.html">Lecture 3: Accuracy and stability</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../linear_systems.html">Lecture 4: Linear Systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../linear_systems/revision.html">Revision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linear_systems/gaussian_elimination.html">Gaussian Elimination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linear_systems/pivoting.html">Pivoting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../lu_decomposition.html">Lecture 5: The <em>LU</em> decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lu_stability.html">Lecture 6: Stability of the <em>LU</em> decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../least_squares.html">Lecture 7: Linear Least Squares</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../qr_decomposition.html">Lecture 8: The <em>QR</em> decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eigenvalue_problems.html">Lecture 9: Eigenvalue Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../singular_value_decomposition.html">Lecture 10: Singular Value Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matrix_functions.html">Lecture 11: Functions of Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matrix_exponential.html">Lecture 12: The Matrix Exponential</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../programming/introduction.html">1. Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../programming/introduction.html">1. Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../programming/introduction/installation.html">1.1. Installation</a></li>
 </ul>
 </li>
@@ -331,8 +344,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-systems">3.1.1. Number systems</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#positional-notation">3.1.2. Positional notation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-systems">Number systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#positional-notation">Positional notation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#base-conversions">Base conversions</a></li>
 </ul>
             </nav>
         </div>
@@ -344,19 +358,19 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="b-adic-representation-of-numbers">
-<h1><span class="section-number">3.1. </span><em>b</em>-adic representation of numbers<a class="headerlink" href="#b-adic-representation-of-numbers" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="b-adic-representation-of-numbers">
+<h1><em>b</em>-adic representation of numbers<a class="headerlink" href="#b-adic-representation-of-numbers" title="Permalink to this heading">#</a></h1>
 <section id="number-systems">
-<h2><span class="section-number">3.1.1. </span>Number systems<a class="headerlink" href="#number-systems" title="Permalink to this heading">#</a></h2>
+<h2>Number systems<a class="headerlink" href="#number-systems" title="Permalink to this heading">#</a></h2>
 <p>Any algorithm in Scientific Computing, at its core, relies on the representation
 of numbers on a computing device and then understanding how arithmetic and/or
 algebraic operations are impacted by the specific representation.</p>
 <p>Mathematically, numbers are elements of any of the following sets:
-$\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \subset \mathbb{C}$.</p>
+<span class="math notranslate nohighlight">\(\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \subset \mathbb{C}\)</span>.</p>
 <p>These sets usually have some algebraic structure imposed on them in the form of
 binary operations and certain axiomatic properties.
-In this context, numbers are then represented using variables, for example, $x
-\in \mathbb{R}$.
+In this context, numbers are then represented using variables, for example, <span class="math notranslate nohighlight">\(x
+\in \mathbb{R}\)</span>.
 However, computing devices usually cannot interpret these symbolic
 representation and the operations that can be performed on these numbers.</p>
 <p>Numbers may also be represented via number systems.
@@ -376,21 +390,21 @@ A number system should</p>
 </aside>
 <aside class="topic">
 <p class="topic-title">Definition</p>
-<p>Let $b \in \mathbb{N}$.
-A <em>base-$b$</em> number system consists of $b$ numerals which correspond to
-$0$ and the first $b-1$ natural numbers, that is, ${0,1,2,\dotsc,b-1}$.
-The number $b$ is called the <em>radix</em> of the number system.</p>
+<p>Let <span class="math notranslate nohighlight">\(b \in \mathbb{N}\)</span>.
+A <em>base-<span class="math notranslate nohighlight">\(b\)</span></em> number system consists of <span class="math notranslate nohighlight">\(b\)</span> numerals which correspond to
+<span class="math notranslate nohighlight">\(0\)</span> and the first <span class="math notranslate nohighlight">\(b-1\)</span> natural numbers, that is, <span class="math notranslate nohighlight">\(\{0,1,2,\dotsc,b-1\}\)</span>.
+The number <span class="math notranslate nohighlight">\(b\)</span> is called the <em>radix</em> of the number system.</p>
 </aside>
 <p>Some well-known examples of number systems are:</p>
 <ul class="simple">
-<li><p>The <em>decimal number system</em> is a base-$10$ numeral system with
-base symbols $\mathbb{D} \equiv {0,1,2,3,4,5,6,7,8,9}$.</p></li>
-<li><p>The base-$2$ number system consisting of the numerals $\mathbb{B} \equiv
-{0,1}$ is called the <em>binary number system</em>.</p></li>
-<li><p>The base-$16$ number system $\mathbb{H}$ consisting of the numerals
-${0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F}$
+<li><p>The <em>decimal number system</em> is a base-<span class="math notranslate nohighlight">\(10\)</span> numeral system with
+base symbols <span class="math notranslate nohighlight">\(\mathbb{D} \equiv \{0,1,2,3,4,5,6,7,8,9\}\)</span>.</p></li>
+<li><p>The base-<span class="math notranslate nohighlight">\(2\)</span> number system consisting of the numerals <span class="math notranslate nohighlight">\(\mathbb{B} \equiv
+\{0,1\}\)</span> is called the <em>binary number system</em>.</p></li>
+<li><p>The base-<span class="math notranslate nohighlight">\(16\)</span> number system <span class="math notranslate nohighlight">\(\mathbb{H}\)</span> consisting of the numerals
+<span class="math notranslate nohighlight">\(\{0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F\}\)</span>
 is called the <em>hexadecimal number system</em>.</p></li>
-<li><p>The base-$8$ number system $\mathbb{O}$ with ${0,1,2,3,4,5,6,7}$
+<li><p>The base-<span class="math notranslate nohighlight">\(8\)</span> number system <span class="math notranslate nohighlight">\(\mathbb{O}\)</span> with <span class="math notranslate nohighlight">\(\{0,1,2,3,4,5,6,7\}\)</span>
 as its base symbols is called the <em>octal number system</em>.</p></li>
 </ul>
 <div class="admonition note">
@@ -399,28 +413,29 @@ as its base symbols is called the <em>octal number system</em>.</p></li>
 implied by the correspondence between the numerals of the number system to
 the natural numbers.</p>
 </div>
-<p>An example of a symbolic number system is the set ${\lambda, \mu, \phi}$, with
-the correspondence
-\begin{equation*}
+<p>An example of a symbolic number system is the set <span class="math notranslate nohighlight">\(\{\lambda, \mu, \phi\}\)</span>, with
+the correspondence</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
 \lambda  \to 0, \quad \mu \to 1, \quad \phi \to 2,
-\end{equation*}
-which implies $\lambda &lt; \mu &lt; \phi$.</p>
+\end{equation*}\]</div>
+<p>which implies <span class="math notranslate nohighlight">\(\lambda &lt; \mu &lt; \phi\)</span>.</p>
 </section>
 <section id="positional-notation">
-<h2><span class="section-number">3.1.2. </span>Positional notation<a class="headerlink" href="#positional-notation" title="Permalink to this heading">#</a></h2>
-<p>From our last example, with the number system ${\lambda, \mu, \phi}$,  we see
-that we can represent the numbers $0$, $1$, and $2$ uniquely (as required per
+<h2>Positional notation<a class="headerlink" href="#positional-notation" title="Permalink to this heading">#</a></h2>
+<p>From our last example, with the number system <span class="math notranslate nohighlight">\(\{\lambda, \mu, \phi\}\)</span>,  we see
+that we can represent the numbers <span class="math notranslate nohighlight">\(0\)</span>, <span class="math notranslate nohighlight">\(1\)</span>, and <span class="math notranslate nohighlight">\(2\)</span> uniquely (as required per
 definition).</p>
-<p>But what if we want to represent $3$, $4$, $5$, etc?</p>
-<p>Generally, only the first $b - 1$ natural numbers and zero may be represented
-using the numerals in a base-$b$ number system.
+<p>But what if we want to represent <span class="math notranslate nohighlight">\(3\)</span>, <span class="math notranslate nohighlight">\(4\)</span>, <span class="math notranslate nohighlight">\(5\)</span>, etc?</p>
+<p>Generally, only the first <span class="math notranslate nohighlight">\(b - 1\)</span> natural numbers and zero may be represented
+using the numerals in a base-<span class="math notranslate nohighlight">\(b\)</span> number system.
 The problem then is to represent numbers larger (or smaller in the sense of
 fractions or negative numbers) than those that may be representated by the base
 numerals.</p>
 <p>We would either have to</p>
 <ul class="simple">
 <li><p>introduce more symbols, which could lead to an infinite
-number of symbols since the natural numbers $\mathbb{N}$ is an infinite set
+number of symbols since the natural numbers <span class="math notranslate nohighlight">\(\mathbb{N}\)</span> is an infinite set
 (which contradicts our definition of a number system), or</p></li>
 <li><p>find a different notational representation of numbers using a finite set of
 numerals in a meaningful manner.</p></li>
@@ -428,27 +443,27 @@ numerals in a meaningful manner.</p></li>
 <p>The most well-known method of representation is the so-called <em>positional
 notation</em>, where significance is attached to a numeral depending on where it
 appears in relation to other numerals.</p>
-<p>Suppose that $x$ is a natural number, that is, $x \in \mathbb{N}_0$.
-It can be shown, via induction, that each number $n$ may be represented in
-a base-$b$ number system as</p>
+<p>Suppose that <span class="math notranslate nohighlight">\(x\)</span> is a natural number, that is, <span class="math notranslate nohighlight">\(x \in \mathbb{N}_0\)</span>.
+It can be shown, via induction, that each number <span class="math notranslate nohighlight">\(n\)</span> may be represented in
+a base-<span class="math notranslate nohighlight">\(b\)</span> number system as</p>
 <div class="math notranslate nohighlight" id="equation-eqn-positional-representation">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-eqn-positional-representation" title="Permalink to this equation">#</a></span>\[  x = c_mb^m + c_{m-1}b^{m-1} + \dotsb + c_2b^2 + c_1b^1 + c_0b^0,\]</div>
-<p>where $c_j \in {0, 1, \dotsc, b-1}$ with $j \in {0,1,2,\dotsc,m}$, $c_m \neq
-0$ and $b^0 = 1$.</p>
+<span class="eqno">(1)<a class="headerlink" href="#equation-eqn-positional-representation" title="Permalink to this equation">#</a></span>\[  x = c_mb^m + c_{m-1}b^{m-1} + \dotsb + c_2b^2 + c_1b^1 + c_0b^0,\]</div>
+<p>where <span class="math notranslate nohighlight">\(c_j \in \{0, 1, \dotsc, b-1\}\)</span> with <span class="math notranslate nohighlight">\(j \in \{0,1,2,\dotsc,m\}\)</span>, <span class="math notranslate nohighlight">\(c_m \neq
+0\)</span> and <span class="math notranslate nohighlight">\(b^0 = 1\)</span>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The coefficients $c_j$ are called <em>digits</em>.
+<p>The coefficients <span class="math notranslate nohighlight">\(c_j\)</span> are called <em>digits</em>.
 It is borrowd from the Latin word <em>digitus</em>, referring to a “finger,
 toe, or finger’s breadth as a unit of measure”, with fingers or
 toes being one of humanity’s first counting aides.</p>
 </div>
-<p>The representation <a class="reference internal" href="#equation-eqn-positional-representation">(3.1)</a> may be shortened to the
+<p>The representation <a class="reference internal" href="#equation-eqn-positional-representation">(1)</a> may be shortened to the
 notation</p>
 <div class="math notranslate nohighlight" id="equation-eqn-positional-notation">
-<span class="eqno">(3.2)<a class="headerlink" href="#equation-eqn-positional-notation" title="Permalink to this equation">#</a></span>\[  n = c_mc_{m-1}\cdots c_2c_1c_0\]</div>
+<span class="eqno">(2)<a class="headerlink" href="#equation-eqn-positional-notation" title="Permalink to this equation">#</a></span>\[  n = c_mc_{m-1}\cdots c_2c_1c_0\]</div>
 <p>which is the most common notation when we represent numbers.</p>
-<p>The representation <a class="reference internal" href="#equation-eqn-positional-notation">(3.2)</a> is read right-to-left, starting
-from $c_0$ (called the <em>least-significant digit</em>) and ending with $c_m$
+<p>The representation <a class="reference internal" href="#equation-eqn-positional-notation">(2)</a> is read right-to-left, starting
+from <span class="math notranslate nohighlight">\(c_0\)</span> (called the <em>least-significant digit</em>) and ending with <span class="math notranslate nohighlight">\(c_m\)</span>
 (called the <em>most-significant digit</em>).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -459,134 +474,140 @@ For example, some Asian cultures use a writing system that writes text
 vertically, from top to bottom, and from right to left.</p>
 </div>
 <p>Note that numbers are always read from right to left in the notation
-\eqref{eqn:positional-notation}, whereas the sums in
-\eqref{eqn:positional-representation} are commutative and could have been
-equivalently written as
-[
-n = c_0 + c_1b^1 + \dotsb + c_{m-1}b^{m-1} + c_mb^m.
-]
-The strictness of the order of the numerals in \eqref{eqn:positional-notation}
+<a class="reference internal" href="#equation-eqn-positional-notation">(2)</a>, whereas the sums in
+<a class="reference internal" href="#equation-eqn-positional-representation">(1)</a> are commutative and could have been
+equivalently written as</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  n = c_0 + c_1b^1 + \dotsb + c_{m-1}b^{m-1} + c_mb^m.
+\end{equation*}\]</div>
+<p>The strictness of the order of the numerals in <a class="reference internal" href="#equation-eqn-positional-notation">(2)</a>
 becomes important when implementing number representations on the computer.</p>
 <aside class="topic">
 <p class="topic-title">Example</p>
-<p>The number $456$, in the decimal number system, may be written as
-$$
-456 = 4 \times 10^2 + 5 \times 10^1 + 6 \times 10^0.
-$$</p>
+<p>The number <span class="math notranslate nohighlight">\(456\)</span>, in the decimal number system, may be written as
+<span class="math notranslate nohighlight">\(456 = 4 \times 10^2 + 5 \times 10^1 + 6 \times 10^0\)</span>.</p>
 </aside>
 <aside class="topic">
 <p class="topic-title">Example</p>
-<p>The number $23$ (in decimal) has the binary representation $10111$, since
-\begin{align*}
-10111 &amp;= 1 \times 2^4 + 0 \times 2^3 + 1 \times 2^2 + 1 \times 2^1 + 1
-\times 2^0 \
-&amp;= 1 \times 16 + 0 \times 8 + 1 \times 4 + 1 \times 2 + 1 \times 1 \
-&amp;= 16 + 4 + 2 + 1 \
-&amp;= 23
-\end{align*}</p>
+<p>The number <span class="math notranslate nohighlight">\(23\)</span> (in decimal) has the binary representation <span class="math notranslate nohighlight">\(10111\)</span>, since</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    10111 &amp;= 1 \times 2^4 + 0 \times 2^3 + 1 \times 2^2 + 1 \times 2^1 + 1
+    \times 2^0 \\
+    &amp;= 1 \times 16 + 0 \times 8 + 1 \times 4 + 1 \times 2 + 1 \times 1 \\
+    &amp;= 16 + 4 + 2 + 1 \\
+    &amp;= 23
+  \end{align*}\]</div>
 </aside>
 <p>As this previous example has shown, confusion might arise in reading number
-representations. The representation $10111$ is the number $23$ in binary, but
-also the number $10111$ in the decimal number system.
+representations. The representation <span class="math notranslate nohighlight">\(10111\)</span> is the number <span class="math notranslate nohighlight">\(23\)</span> in binary, but
+also the number <span class="math notranslate nohighlight">\(10111\)</span> in the decimal number system.
 We distinguish the representation of the number by writing the base as a
-subscript after the representation, that is, $n_b$ where $n$ is the number and
-$b$ is the base of the specific number system.
-Thus, in the last example, we could write $23_{10} = 10111_{2}$ which clarifies
-that $10111$ is the binary representation of the number $23$ in the decimal
-number system, and not the number $10111$ in the decimal number system.
+subscript after the representation, that is, <span class="math notranslate nohighlight">\(n_b\)</span> where <span class="math notranslate nohighlight">\(n\)</span> is the number and
+<span class="math notranslate nohighlight">\(b\)</span> is the base of the specific number system.
+Thus, in the last example, we could write <span class="math notranslate nohighlight">\(23_{10} = 10111_{2}\)</span> which clarifies
+that <span class="math notranslate nohighlight">\(10111\)</span> is the binary representation of the number <span class="math notranslate nohighlight">\(23\)</span> in the decimal
+number system, and not the number <span class="math notranslate nohighlight">\(10111\)</span> in the decimal number system.
 Since the decimal number system is the most widely used, the subscript is often
 not written for decimal numbers.</p>
-<p>\section{Base conversions}
-Conversion from decimal to any of the other important number systems (binary,
+</section>
+<section id="base-conversions">
+<h2>Base conversions<a class="headerlink" href="#base-conversions" title="Permalink to this heading">#</a></h2>
+<p>Conversion from decimal to any of the other important number systems (binary,
 hexadecimal, octal) are done via repeated integer division.
-Recall that any positive integer $n$ may be represented as $n = q \times b + r$
-where $q$ is a positive integer called the \emph{quotient} and $r$ is a positive
-integer called the \emph{remainder}.
-The algorithm is as follows:
-\begin{enumerate}[noitemsep, label=(\roman*), ref=\roman*, align=right]
-\item divide the decimal number successively by $b$,
-\item the remainders of the division are the coefficients of $b^0,\ b^1,<br />
-b^2,\ \dotsc$ (in that order).
-\end{enumerate}
-Conversion from a number system (binary, hexadecimal, octal) to decimal is done
+Recall that any positive integer <span class="math notranslate nohighlight">\(n\)</span> may be represented as <span class="math notranslate nohighlight">\(n = q \times b + r\)</span>
+where <span class="math notranslate nohighlight">\(q\)</span> is a positive integer called the <em>quotient</em> and <span class="math notranslate nohighlight">\(r\)</span> is a positive
+integer called the <em>remainder</em>.
+The algorithm is as follows:</p>
+<ul class="simple">
+<li><p>divide the decimal number successively by <span class="math notranslate nohighlight">\(b\)</span>,</p></li>
+<li><p>the remainders of the division are the coefficients of <span class="math notranslate nohighlight">\(b^0,\ b^1,\ b^2,\ \dotsc\)</span> (in that order).</p></li>
+</ul>
+<p>Conversion from a number system (binary, hexadecimal, octal) to decimal is done
 by writing the number in positional representation
-\eqref{eqn:positional-representation} and evaluating accordingly.</p>
+<a class="reference internal" href="#equation-eqn-positional-representation">(1)</a> and evaluating accordingly.</p>
 <aside class="topic">
 <p class="topic-title">Example</p>
-<p>Consider $456_{10}$.
-Then
-[
-\begin{array}{c|c|c|c|c}
-j\ \mbox{(step)} &amp; n\ \mbox{(number)} &amp; q\ \mbox{(quotient)} &amp; r<br />
-\mbox{(remainder)} &amp; c_j\ \mbox{(coefficient of}\ 2^j) \
-\hline
-0 &amp; 456 &amp; 228 &amp; 0 &amp; 0 \
-1 &amp; 228 &amp; 114 &amp; 0 &amp; 0 \
-2 &amp; 114 &amp; 57 &amp; 0 &amp; 0 \
-3 &amp; 57 &amp; 28 &amp; 1 &amp; 1 \
-4 &amp; 28 &amp; 14 &amp; 0 &amp; 0 \
-5 &amp; 14 &amp; 7 &amp; 0 &amp; 0 \
-6 &amp; 7 &amp; 3 &amp; 1 &amp; 1 \
-7 &amp; 3 &amp; 1 &amp; 1 &amp; 1 \
-8 &amp; 1 &amp; 0 &amp; 1 &amp; 1
-\end{array}
-]</p>
-<p>Therefore, $456_{10} = 111001000_{2}$.</p>
+<p>Consider <span class="math notranslate nohighlight">\(456_{10}\)</span>.
+Then</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    \begin{array}{c|c|c|c|c}
+      j\ \mbox{(step)} &amp; n\ \mbox{(number)} &amp; q\ \mbox{(quotient)} &amp; r\
+      \mbox{(remainder)} &amp; c_j\ \mbox{(coefficient of}\ 2^j) \\
+      \hline
+      0 &amp; 456 &amp; 228 &amp; 0 &amp; 0 \\
+      1 &amp; 228 &amp; 114 &amp; 0 &amp; 0 \\
+      2 &amp; 114 &amp; 57 &amp; 0 &amp; 0 \\
+      3 &amp; 57 &amp; 28 &amp; 1 &amp; 1 \\
+      4 &amp; 28 &amp; 14 &amp; 0 &amp; 0 \\
+      5 &amp; 14 &amp; 7 &amp; 0 &amp; 0 \\
+      6 &amp; 7 &amp; 3 &amp; 1 &amp; 1 \\
+      7 &amp; 3 &amp; 1 &amp; 1 &amp; 1 \\
+      8 &amp; 1 &amp; 0 &amp; 1 &amp; 1
+    \end{array}
+  \end{equation*}\]</div>
+<p>Therefore, <span class="math notranslate nohighlight">\(456_{10} = 111001000_{2}\)</span>.</p>
 </aside>
 <aside class="topic">
 <p class="topic-title">Example</p>
-<p>Consider $456_{10}$.
-Then
-[
-\begin{array}{c|c|c|c|c}
-j\ \mbox{(step)} &amp; n\ \mbox{(number)} &amp; q\ \mbox{(quotient)} &amp; r<br />
-\mbox{(remainder)} &amp; c_j\ \mbox{(coefficient of}\ 16^j) \
-\hline
-0 &amp; 456 &amp; 28 &amp; 8 &amp; 8 \
-1 &amp; 28 &amp; 1 &amp; 12 &amp; C \
-2 &amp; 1 &amp; 0 &amp; 1 &amp; 1
-\end{array}
-]
-Therefore, $456_{10} = 1C8_{16}$.</p>
+<p>Consider <span class="math notranslate nohighlight">\(456_{10}\)</span>.
+Then</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    \begin{array}{c|c|c|c|c}
+      j\ \mbox{(step)} &amp; n\ \mbox{(number)} &amp; q\ \mbox{(quotient)} &amp; r\
+      \mbox{(remainder)} &amp; c_j\ \mbox{(coefficient of}\ 16^j) \\
+      \hline
+      0 &amp; 456 &amp; 28 &amp; 8 &amp; 8 \\
+      1 &amp; 28 &amp; 1 &amp; 12 &amp; C \\
+      2 &amp; 1 &amp; 0 &amp; 1 &amp; 1
+    \end{array}
+  \end{equation*}\]</div>
+<p>Therefore, <span class="math notranslate nohighlight">\(456_{10} = 1C8_{16}\)</span>.</p>
 </aside>
 <aside class="topic">
 <p class="topic-title">Example</p>
-<p>Consider $456_{10}$.
-Then
-[
-\begin{array}{c|c|c|c|c}
-j\ \mbox{(step)} &amp; n\ \mbox{(number)} &amp; q\ \mbox{(quotient)} &amp; r<br />
-\mbox{(remainder)} &amp; c_j\ \mbox{(coefficient of}\ 8^j) \
-\hline
-0 &amp; 456 &amp; 57 &amp; 0 &amp; 0 \
-1 &amp; 57 &amp; 7 &amp; 1 &amp; 1 \
-2 &amp; 7 &amp; 0 &amp; 7 &amp; 7
-\end{array}
-]
-Therefore, $456_{10} = 710_{8}$.</p>
+<p>Consider <span class="math notranslate nohighlight">\(456_{10}\)</span>.
+Then</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    \begin{array}{c|c|c|c|c}
+      j\ \mbox{(step)} &amp; n\ \mbox{(number)} &amp; q\ \mbox{(quotient)} &amp; r\
+      \mbox{(remainder)} &amp; c_j\ \mbox{(coefficient of}\ 8^j) \\
+      \hline
+      0 &amp; 456 &amp; 57 &amp; 0 &amp; 0 \\
+      1 &amp; 57 &amp; 7 &amp; 1 &amp; 1 \\
+      2 &amp; 7 &amp; 0 &amp; 7 &amp; 7
+    \end{array}
+  \end{equation*}\]</div>
+<p>Therefore, <span class="math notranslate nohighlight">\(456_{10} = 710_{8}\)</span>.</p>
 </aside>
 <aside class="topic">
 <p class="topic-title">Example</p>
-<p>Consider $10101010_2$.
-Then
-\begin{align*}
-10101010_2 &amp;= 1 \times 2^7 + 0 \times 2^6 + 1 \times 2^5 + 0 \times 2^4 + 1
-\times 2^3 + 0 \times 2^2 + 1 \times 2^1 + 0 \times 2^0 \
-&amp;= 128 + 32 + 8 + 2 \
-&amp;= 170_{10}
-\end{align*}</p>
+<p>Consider <span class="math notranslate nohighlight">\(10101010_2\)</span>.
+Then</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    10101010_2 &amp;= 1 \times 2^7 + 0 \times 2^6 + 1 \times 2^5 + 0 \times 2^4 + 1
+    \times 2^3 + 0 \times 2^2 + 1 \times 2^1 + 0 \times 2^0 \\
+    &amp;= 128 + 32 + 8 + 2 \\
+    &amp;= 170_{10}
+  \end{align*}\]</div>
 </aside>
 <aside class="topic">
 <p class="topic-title">Example</p>
-<p>Consider $BC19_{16}$.
-Then
-\begin{align*}
-BC19_{16} &amp;= B \times 16^3 + C \times 16^2 + 1 \times 16^1 + 9 \times 16^0
-\
-&amp;= 11 \times 4096 + 12 \times 256 + 16 + 9 \
-&amp;= 45056 + 3072 + 16 + 9 \
-&amp;= 48153_{10}
-\end{align*}</p>
+<p>Consider <span class="math notranslate nohighlight">\(BC19_{16}\)</span>.
+Then</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    BC19_{16} &amp;= B \times 16^3 + C \times 16^2 + 1 \times 16^1 + 9 \times 16^0
+    \\
+    &amp;= 11 \times 4096 + 12 \times 256 + 16 + 9 \\
+    &amp;= 45056 + 3072 + 16 + 9 \\
+    &amp;= 48153_{10}
+  \end{align*}\]</div>
 </aside>
 </section>
 </section>
@@ -628,7 +649,7 @@ BC19_{16} &amp;= B \times 16^3 + C \times 16^2 + 1 \times 16^1 + 9 \times 16^0
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>Computer Arithmetic</p>
+        <p class="prev-next-title">Lecture 2: Computer Arithmetic</p>
       </div>
     </a>
     <a class="right-next"
@@ -636,7 +657,7 @@ BC19_{16} &amp;= B \times 16^3 + C \times 16^2 + 1 \times 16^1 + 9 \times 16^0
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.2. </span>Binary numbers and binary arithmetic</p>
+        <p class="prev-next-title">Binary numbers and binary arithmetic</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -658,8 +679,9 @@ BC19_{16} &amp;= B \times 16^3 + C \times 16^2 + 1 \times 16^1 + 9 \times 16^0
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-systems">3.1.1. Number systems</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#positional-notation">3.1.2. Positional notation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-systems">Number systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#positional-notation">Positional notation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#base-conversions">Base conversions</a></li>
 </ul>
   </nav></div>
 

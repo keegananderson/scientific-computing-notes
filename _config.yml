@@ -38,7 +38,7 @@ html:
 parse:
   myst_enable_extensions:
     - amsmath
-    - dollarmath:
+    - dollarmath
     - smartquotes
   myst_url_schemes: [mailto, http, https]
   myst_dmath_double_inline: true

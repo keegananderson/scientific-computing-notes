@@ -100,7 +100,7 @@ Suppose that $x$ is a natural number, that is, $x \in \mathbb{N}_0$.
 It can be shown, via induction, that each number $n$ may be represented in
 a base-$b$ number system as
 ```{math}
-:label: eqn-positional-representation
+:label: eqn:positional-representation
   x = c_mb^m + c_{m-1}b^{m-1} + \dotsb + c_2b^2 + c_1b^1 + c_0b^0,
 ```
 where $c_j \in \{0, 1, \dotsc, b-1\}$ with $j \in \{0,1,2,\dotsc,m\}$, $c_m \neq
@@ -111,15 +111,15 @@ where $c_j \in \{0, 1, \dotsc, b-1\}$ with $j \in \{0,1,2,\dotsc,m\}$, $c_m \neq
   toe, or finger's breadth as a unit of measure", with fingers or
   toes being one of humanity's first counting aides.
 ```
-The representation {eq}`eqn-positional-representation` may be shortened to the
+The representation {eq}`eqn:positional-representation` may be shortened to the
 notation
 ```{math}
-:label: eqn-positional-notation
+:label: eqn:positional-notation
   n = c_mc_{m-1}\cdots c_2c_1c_0
 ```
 which is the most common notation when we represent numbers.
 
-The representation {eq}`eqn-positional-notation` is read right-to-left, starting
+The representation {eq}`eqn:positional-notation` is read right-to-left, starting
 from $c_0$ (called the *least-significant digit*) and ending with $c_m$
 (called the *most-significant digit*).
 
@@ -131,20 +131,18 @@ from $c_0$ (called the *least-significant digit*) and ending with $c_m$
   vertically, from top to bottom, and from right to left.
 ```
 Note that numbers are always read from right to left in the notation
-\eqref{eqn:positional-notation}, whereas the sums in
-\eqref{eqn:positional-representation} are commutative and could have been
+{eq}`eqn:positional-notation`, whereas the sums in
+{eq}`eqn:positional-representation` are commutative and could have been
 equivalently written as
-\[
+\begin{equation*}
   n = c_0 + c_1b^1 + \dotsb + c_{m-1}b^{m-1} + c_mb^m.
-\]
-The strictness of the order of the numerals in \eqref{eqn:positional-notation}
+\end{equation*}
+The strictness of the order of the numerals in {eq}`eqn:positional-notation`
 becomes important when implementing number representations on the computer.
 
 ```{topic} Example
   The number $456$, in the decimal number system, may be written as
-  $$
-    456 = 4 \times 10^2 + 5 \times 10^1 + 6 \times 10^0.
-  $$
+  $456 = 4 \times 10^2 + 5 \times 10^1 + 6 \times 10^0$.
 ```
 ```{topic} Example
   The number $23$ (in decimal) has the binary representation $10111$, since
@@ -168,26 +166,24 @@ number system, and not the number $10111$ in the decimal number system.
 Since the decimal number system is the most widely used, the subscript is often
 not written for decimal numbers.
 
-\section{Base conversions}
+## Base conversions
 Conversion from decimal to any of the other important number systems (binary,
 hexadecimal, octal) are done via repeated integer division.
 Recall that any positive integer $n$ may be represented as $n = q \times b + r$
-where $q$ is a positive integer called the \emph{quotient} and $r$ is a positive
-integer called the \emph{remainder}.
+where $q$ is a positive integer called the *quotient* and $r$ is a positive
+integer called the *remainder*.
 The algorithm is as follows:
-\begin{enumerate}[noitemsep, label=(\roman*), ref=\roman*, align=right]
-  \item divide the decimal number successively by $b$,
-  \item the remainders of the division are the coefficients of $b^0,\ b^1,\
-    b^2,\ \dotsc$ (in that order).
-\end{enumerate}
+* divide the decimal number successively by $b$,
+* the remainders of the division are the coefficients of $b^0,\ b^1,\ b^2,\ \dotsc$ (in that order).
+
 Conversion from a number system (binary, hexadecimal, octal) to decimal is done
 by writing the number in positional representation
-\eqref{eqn:positional-representation} and evaluating accordingly.
+{eq}`eqn:positional-representation` and evaluating accordingly.
 
 ```{topic} Example
   Consider $456_{10}$.
   Then
-  \[
+  \begin{equation*}
     \begin{array}{c|c|c|c|c}
       j\ \mbox{(step)} & n\ \mbox{(number)} & q\ \mbox{(quotient)} & r\
       \mbox{(remainder)} & c_j\ \mbox{(coefficient of}\ 2^j) \\
@@ -202,27 +198,14 @@ by writing the number in positional representation
       7 & 3 & 1 & 1 & 1 \\
       8 & 1 & 0 & 1 & 1
     \end{array}
-  \]
-  %\begin{align*}
-  %  456/2 &= 228,  &\mbox{remainder} &= 0, & & \mbox{coefficient of}\ 2^0 = 0
-  %  \\
-  %  228/2 &= 114,  &\mbox{remainder} &= 0, & & \mbox{coefficient of}\ 2^1 = 0
-  %  \\
-  %  114/2 &= 57,  &\mbox{remainder} &= 0, & & \mbox{coefficient of}\ 2^2 = 0 \\
-  %  57/2 &= 28, &\mbox{remainder} &= 1, & & \mbox{coefficient of}\ 2^3 = 1 \\
-  %  28/2 &= 14, &\mbox{remainder} &= 0, & & \mbox{coefficient of}\ 2^4 = 0 \\
-  %  14/2 &= 7, &\mbox{remainder} &= 0, & & \mbox{coefficient of}\ 2^5 = 0 \\
-  %  7/2 &= 3, &\mbox{remainder} &= 1, & & \mbox{coefficient of}\ 2^6 = 1 \\
-  %  3/2 &= 1, &\mbox{remainder} &= 1, & & \mbox{coefficient of}\ 2^7 = 1 \\
-  %  1/2 &= 0, &\mbox{remainder} &= 1, & & \mbox{coefficient of}\ 2^8 = 1 \\
-  %\end{align*}
+  \end{equation*}
   Therefore, $456_{10} = 111001000_{2}$.
 ```
 
 ```{topic} Example
   Consider $456_{10}$.
   Then
-  \[
+  \begin{equation*}
     \begin{array}{c|c|c|c|c}
       j\ \mbox{(step)} & n\ \mbox{(number)} & q\ \mbox{(quotient)} & r\
       \mbox{(remainder)} & c_j\ \mbox{(coefficient of}\ 16^j) \\
@@ -231,14 +214,14 @@ by writing the number in positional representation
       1 & 28 & 1 & 12 & C \\
       2 & 1 & 0 & 1 & 1
     \end{array}
-  \]
+  \end{equation*}
   Therefore, $456_{10} = 1C8_{16}$.
 ```
 
 ```{topic} Example
   Consider $456_{10}$.
   Then
-  \[
+  \begin{equation*}
     \begin{array}{c|c|c|c|c}
       j\ \mbox{(step)} & n\ \mbox{(number)} & q\ \mbox{(quotient)} & r\
       \mbox{(remainder)} & c_j\ \mbox{(coefficient of}\ 8^j) \\
@@ -247,7 +230,7 @@ by writing the number in positional representation
       1 & 57 & 7 & 1 & 1 \\
       2 & 7 & 0 & 7 & 7
     \end{array}
-  \]
+  \end{equation*}
   Therefore, $456_{10} = 710_{8}$.
 ```
 
