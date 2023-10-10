@@ -351,6 +351,7 @@ we may also write the natural numbers as follows:
   * a zero (0), 
   * a natural number $\{1,2,3,\dotsc\}$, or 
   * a negative natural number $\{-1,-2,-3,\dotsc\}$.
+
   The set of all integers is denoted by $\mathbb{Z}$.
 ```
 
@@ -382,8 +383,10 @@ represent $x \in \mathbb{Z}$ as
 ```{topic} Definition.
   A *rational number* is a number of the form $\frac{a}{b}$ where
   $a,b\in\mathbb{Z}$.
+
+  The set of all rational numbers is denoted by $\mathbb{Q}$.
 ```
-The set of all rational numbers is denoted by $\mathbb{Q}$.
+
 
 ### Real number representation
 
