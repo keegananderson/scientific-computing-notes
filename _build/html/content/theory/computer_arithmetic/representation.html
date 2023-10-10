@@ -174,7 +174,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="floating-point_numbers.html">Floating-point numbers and floating-point arithmetic</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../accuracy.html">Lecture 3: Accuracy and stability</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../accuracy.html">Lecture 3: Accuracy and stability</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../accuracy/error.html">Error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../accuracy/floating-point_error.html">Floating-point error</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../linear_systems.html">Lecture 4: Linear Systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -347,6 +349,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-systems">Number systems</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#positional-notation">Positional notation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#base-conversions">Base conversions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-representations">Other representations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integer-number-representation">Integer number representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rational-number-representation">Rational number representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#real-number-representation">Real number representation</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -378,24 +386,53 @@ Number systems are writing systems used to express numbers of a given set
 using digits and/or mathematical notation.</p>
 <aside class="topic">
 <p class="topic-title">Definition</p>
-<p>A <em>number system</em> is a set which consists of a finite quantity of unique
-symbols.
-A symbol of a number system is called a <em>numeral</em>.
-A number system should</p>
+<p>A <em>number system</em> is a mathematical writing system for expressing numbers.
+It may be represented as a set which consists of a finite quantity of unique
+symbols (called <em>numerals</em>), which should be able to</p>
 <ul class="simple">
-<li><p>be able to represent a given set of numbers fully,</p></li>
+<li><p>represent a given set of numbers fully,</p></li>
 <li><p>represent each number in the set of numbers uniquely, and</p></li>
 <li><p>reflect any algebraic or arithmetic structure imposed on the set.</p></li>
 </ul>
 </aside>
+<p>Some number systems (e.g., Egyptian, Mayan) use pictures to represent numerals,
+while others (e.g., Roman, Japanese) use alphabet letters to represent numerals.
+The most commonly used numerals <span class="math notranslate nohighlight">\(0,1,2,3,4,5,6,7,8,9\)</span> are called <em>Arabic
+numerals</em>, which originally developed from the Hindu-Arabic numeral system.</p>
+<aside class="topic">
+<p class="topic-title">Example</p>
+<p>The Roman numerals represent natural numbers as a combination of letters from
+the Latin alphabet:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    \begin{array}{c c c c c c c}
+      \text{I} &amp; \text{V} &amp; \text{X} &amp; \text{L} &amp; \text{C} &amp; \text{M} \\
+      1 &amp; 5 &amp; 10 &amp; 50 &amp; 100 &amp; 1000
+    \end{array}
+  \end{equation*}\]</div>
+<p>The first five natural numbers <span class="math notranslate nohighlight">\(1,2,3,4,5\)</span> would be represented as I, II, III,
+IV, V.</p>
+</aside>
 <aside class="topic">
 <p class="topic-title">Definition</p>
-<p>Let <span class="math notranslate nohighlight">\(b \in \mathbb{N}\)</span>.
-A <em>base-<span class="math notranslate nohighlight">\(b\)</span></em> number system consists of <span class="math notranslate nohighlight">\(b\)</span> numerals which correspond to
-<span class="math notranslate nohighlight">\(0\)</span> and the first <span class="math notranslate nohighlight">\(b-1\)</span> natural numbers, that is, <span class="math notranslate nohighlight">\(\{0,1,2,\dotsc,b-1\}\)</span>.
-The number <span class="math notranslate nohighlight">\(b\)</span> is called the <em>radix</em> of the number system.</p>
+<p>A <em>base-<span class="math notranslate nohighlight">\(b\)</span></em> number system consists of a set of <span class="math notranslate nohighlight">\(b\)</span> numerals
+<span class="math notranslate nohighlight">\(\{d_1,d_2,\dotsc,d_b\}\)</span> called <em>digits</em>.</p>
 </aside>
-<p>Some well-known examples of number systems are:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The term <em>digit</em> is borrowed from the Latin word <em>digitus</em>, referring to a
+“finger, toe, or finger’s breadth as a unit of measure”, with fingers or
+toes being one of humanity’s first counting aides.</p>
+</div>
+<p>The <em>radix</em> <span class="math notranslate nohighlight">\(r\)</span> is the number of unique digits, including zero, that number
+system uses to represent numbers.
+If we have a negative base, that is, <span class="math notranslate nohighlight">\(b &lt; 0\)</span>, then we let <span class="math notranslate nohighlight">\(r = \lvert b\rvert\)</span>.</p>
+<p>Usually, in an Arabic numeral based system, the digits <span class="math notranslate nohighlight">\(\{d_1, d_2, \dotsc,
+d_b\}\)</span> correspond to <span class="math notranslate nohighlight">\(0\)</span> and the first <span class="math notranslate nohighlight">\(b-1\)</span> natural numbers, that is,
+<span class="math notranslate nohighlight">\(\{0,1,2,\dotsc,b-1\}\)</span>.</p>
+<aside class="topic">
+<p class="topic-title">Example</p>
+<p>Some well-known examples of Arabic numeral based number systems are:</p>
 <ul class="simple">
 <li><p>The <em>decimal number system</em> is a base-<span class="math notranslate nohighlight">\(10\)</span> numeral system with
 base symbols <span class="math notranslate nohighlight">\(\mathbb{D} \equiv \{0,1,2,3,4,5,6,7,8,9\}\)</span>.</p></li>
@@ -407,9 +444,11 @@ is called the <em>hexadecimal number system</em>.</p></li>
 <li><p>The base-<span class="math notranslate nohighlight">\(8\)</span> number system <span class="math notranslate nohighlight">\(\mathbb{O}\)</span> with <span class="math notranslate nohighlight">\(\{0,1,2,3,4,5,6,7\}\)</span>
 as its base symbols is called the <em>octal number system</em>.</p></li>
 </ul>
+</aside>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Our numerals must respect some type of ordering, which is
+<p>If the numbers we want to represent obey some type of ordering, then the
+numerals of the number system must also respect the same ordering, which is
 implied by the correspondence between the numerals of the number system to
 the natural numbers.</p>
 </div>
@@ -450,18 +489,16 @@ a base-<span class="math notranslate nohighlight">\(b\)</span> number system as<
 <span class="eqno">(1)<a class="headerlink" href="#equation-eqn-positional-representation" title="Permalink to this equation">#</a></span>\[  x = c_mb^m + c_{m-1}b^{m-1} + \dotsb + c_2b^2 + c_1b^1 + c_0b^0,\]</div>
 <p>where <span class="math notranslate nohighlight">\(c_j \in \{0, 1, \dotsc, b-1\}\)</span> with <span class="math notranslate nohighlight">\(j \in \{0,1,2,\dotsc,m\}\)</span>, <span class="math notranslate nohighlight">\(c_m \neq
 0\)</span> and <span class="math notranslate nohighlight">\(b^0 = 1\)</span>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The coefficients <span class="math notranslate nohighlight">\(c_j\)</span> are called <em>digits</em>.
-It is borrowd from the Latin word <em>digitus</em>, referring to a “finger,
-toe, or finger’s breadth as a unit of measure”, with fingers or
-toes being one of humanity’s first counting aides.</p>
-</div>
 <p>The representation <a class="reference internal" href="#equation-eqn-positional-representation">(1)</a> may be shortened to the
 notation</p>
 <div class="math notranslate nohighlight" id="equation-eqn-positional-notation">
-<span class="eqno">(2)<a class="headerlink" href="#equation-eqn-positional-notation" title="Permalink to this equation">#</a></span>\[  n = c_mc_{m-1}\cdots c_2c_1c_0\]</div>
+<span class="eqno">(2)<a class="headerlink" href="#equation-eqn-positional-notation" title="Permalink to this equation">#</a></span>\[  n = c_mc_{m-1}\dotsm c_2c_1c_0\]</div>
 <p>which is the most common notation when we represent numbers.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The shortened positional representation <span class="math notranslate nohighlight">\(c_mc_{m-1}\dotsm c_2c_1c_0\)</span> represents
+the sequence of digits, not multiplication.</p>
+</div>
 <p>The representation <a class="reference internal" href="#equation-eqn-positional-notation">(2)</a> is read right-to-left, starting
 from <span class="math notranslate nohighlight">\(c_0\)</span> (called the <em>least-significant digit</em>) and ending with <span class="math notranslate nohighlight">\(c_m\)</span>
 (called the <em>most-significant digit</em>).</p>
@@ -504,9 +541,14 @@ becomes important when implementing number representations on the computer.</p>
 representations. The representation <span class="math notranslate nohighlight">\(10111\)</span> is the number <span class="math notranslate nohighlight">\(23\)</span> in binary, but
 also the number <span class="math notranslate nohighlight">\(10111\)</span> in the decimal number system.
 We distinguish the representation of the number by writing the base as a
-subscript after the representation, that is, <span class="math notranslate nohighlight">\(n_b\)</span> where <span class="math notranslate nohighlight">\(n\)</span> is the number and
-<span class="math notranslate nohighlight">\(b\)</span> is the base of the specific number system.
-Thus, in the last example, we could write <span class="math notranslate nohighlight">\(23_{10} = 10111_{2}\)</span> which clarifies
+subscript after the representation, that is,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  n_b = (c_mc_{m-1}\dotsm c_2c_1c_0)_b,
+\end{equation*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(n\)</span> is the number, <span class="math notranslate nohighlight">\(c_j\)</span> (<span class="math notranslate nohighlight">\(j \in \{1,2,\dotsc,m\}\)</span>) are the digits, and
+<span class="math notranslate nohighlight">\(b\)</span> is the base of the specific number system.</p>
+<p>Thus, in the last example, we could write <span class="math notranslate nohighlight">\(23_{10} = 10111_{2}\)</span> which clarifies
 that <span class="math notranslate nohighlight">\(10111\)</span> is the binary representation of the number <span class="math notranslate nohighlight">\(23\)</span> in the decimal
 number system, and not the number <span class="math notranslate nohighlight">\(10111\)</span> in the decimal number system.
 Since the decimal number system is the most widely used, the subscript is often
@@ -516,17 +558,14 @@ not written for decimal numbers.</p>
 <h2>Base conversions<a class="headerlink" href="#base-conversions" title="Permalink to this heading">#</a></h2>
 <p>Conversion from decimal to any of the other important number systems (binary,
 hexadecimal, octal) are done via repeated integer division.
-Recall that any positive integer <span class="math notranslate nohighlight">\(n\)</span> may be represented as <span class="math notranslate nohighlight">\(n = q \times b + r\)</span>
-where <span class="math notranslate nohighlight">\(q\)</span> is a positive integer called the <em>quotient</em> and <span class="math notranslate nohighlight">\(r\)</span> is a positive
-integer called the <em>remainder</em>.
+Recall that any natural number <span class="math notranslate nohighlight">\(n\)</span> may be represented as <span class="math notranslate nohighlight">\(n = q \times b + r\)</span>
+where <span class="math notranslate nohighlight">\(q\)</span> is a natural number called the <em>quotient</em> and <span class="math notranslate nohighlight">\(r\)</span> is a natural number
+called the <em>remainder</em>.
 The algorithm is as follows:</p>
 <ul class="simple">
 <li><p>divide the decimal number successively by <span class="math notranslate nohighlight">\(b\)</span>,</p></li>
 <li><p>the remainders of the division are the coefficients of <span class="math notranslate nohighlight">\(b^0,\ b^1,\ b^2,\ \dotsc\)</span> (in that order).</p></li>
 </ul>
-<p>Conversion from a number system (binary, hexadecimal, octal) to decimal is done
-by writing the number in positional representation
-<a class="reference internal" href="#equation-eqn-positional-representation">(1)</a> and evaluating accordingly.</p>
 <aside class="topic">
 <p class="topic-title">Example</p>
 <p>Consider <span class="math notranslate nohighlight">\(456_{10}\)</span>.
@@ -584,6 +623,9 @@ Then</p>
   \end{equation*}\]</div>
 <p>Therefore, <span class="math notranslate nohighlight">\(456_{10} = 710_{8}\)</span>.</p>
 </aside>
+<p>Conversion from a number system (binary, hexadecimal, octal) to decimal is done
+by writing the number in positional representation
+<a class="reference internal" href="#equation-eqn-positional-representation">(1)</a> and evaluating accordingly.</p>
 <aside class="topic">
 <p class="topic-title">Example</p>
 <p>Consider <span class="math notranslate nohighlight">\(10101010_2\)</span>.
@@ -609,6 +651,104 @@ Then</p>
     &amp;= 48153_{10}
   \end{align*}\]</div>
 </aside>
+</section>
+<section id="other-representations">
+<h2>Other representations<a class="headerlink" href="#other-representations" title="Permalink to this heading">#</a></h2>
+<p>In the previous section, we saw how we could represent natural numbers using the
+positional notation that we introduced, and how we could convert the
+representation of such natural numbers in different bases.</p>
+<p>The question arises:</p>
+<blockquote>
+<div><p>How do we represent other types of numbers (e.g., integer, rational, or real
+numbers) in this positional notation?</p>
+</div></blockquote>
+<section id="integer-number-representation">
+<h3>Integer number representation<a class="headerlink" href="#integer-number-representation" title="Permalink to this heading">#</a></h3>
+<p>The number zero, denoted by <span class="math notranslate nohighlight">\(0\)</span>, is the unique number such that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    n + 0 = 0 + n = n,
+\end{equation*}\]</div>
+<p>for all natural numbers <span class="math notranslate nohighlight">\(n \in \mathbb{N}\)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is the algebraic definition of zero.
+In the algebraic context, zero is called the <em>additive identity</em>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The number zero is not necessarily the same as the digit zero.
+The digit zero is used to represent the “skipping” of a position in positional
+number systems.</p>
+</div>
+<p>The negative natural numbers may be defined as the set of numbers obtained from
+the natural numbers by appending the symbol <span class="math notranslate nohighlight">\(-\)</span> left of the most-significant
+digit, that is,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  \mathbb{N}^- = \{ n \in \mathbb{N} \mid -n\} = \{-1,-2,-3,\dotsc\}.
+\end{equation*}\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The definition of negative numbers is actually more involved, but ours will
+suffice for talking about integers.</p>
+</div>
+<p>To distinguish the natural numbers from the negative natural numbers even more,
+we may also write the natural numbers as follows:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  \mathbb{N}^+ = \{ n \in \mathbb{N} \mid +n\} = \{+1, +2, +3, \dotsc\}.
+\end{equation*}\]</div>
+<aside class="topic">
+<p class="topic-title">Definition</p>
+<p>The attribute of a number being written either as <span class="math notranslate nohighlight">\(0\)</span>, or with a <span class="math notranslate nohighlight">\(+\)</span> or <span class="math notranslate nohighlight">\(-\)</span>
+added left of the most-significant digit, is called its <em>sign</em>.</p>
+</aside>
+<aside class="topic">
+<p class="topic-title">Definition.</p>
+<p>An <em>integer</em> is a number that can either be</p>
+<ul class="simple">
+<li><p>a zero (0),</p></li>
+<li><p>a natural number <span class="math notranslate nohighlight">\(\{1,2,3,\dotsc\}\)</span>, or</p></li>
+<li><p>a negative natural number <span class="math notranslate nohighlight">\(\{-1,-2,-3,\dotsc\}\)</span>.
+The set of all integers is denoted by <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span>.</p></li>
+</ul>
+</aside>
+<p>There is an ordering of the integers given by</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    \dotsb &lt; -3 &lt; -2 &lt; -1 &lt; 0 &lt; 1 &lt; 2 &lt; 3 &lt; \dotsb.
+\end{equation*}\]</div>
+<p>Integers larger than zero are called <em>strictly positive</em>, and integers smaller
+than zero are called <em>strictly negative</em>.</p>
+<p>It should be easily seen that we may still use
+<a class="reference internal" href="#equation-eqn-positional-representation">(1)</a> to represent integers, but with an extra
+symbol of either <span class="math notranslate nohighlight">\(+\)</span> and <span class="math notranslate nohighlight">\(-\)</span>, left of the most-significant digit, to represent
+whether the integer is positive or negative.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For positive numbers, we usually omit the <span class="math notranslate nohighlight">\(+\)</span> symbol.</p>
+</div>
+<p>More abstractly, we introduce the symbol <span class="math notranslate nohighlight">\(\sigma\)</span> which may take the value of
+either <span class="math notranslate nohighlight">\(+1\)</span> or <span class="math notranslate nohighlight">\(-1\)</span>, that is, <span class="math notranslate nohighlight">\(\sigma \in \{-1, 1\}\)</span>, which allows us to
+represent <span class="math notranslate nohighlight">\(x \in \mathbb{Z}\)</span> as</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  x = \sigma(c_mc_{m-1}\dotsm c_2c_1c_0)_b.
+\end{equation*}\]</div>
+</section>
+<section id="rational-number-representation">
+<h3>Rational number representation<a class="headerlink" href="#rational-number-representation" title="Permalink to this heading">#</a></h3>
+<aside class="topic">
+<p class="topic-title">Definition.</p>
+<p>A <em>rational number</em> is a number of the form <span class="math notranslate nohighlight">\(\frac{a}{b}\)</span> where
+<span class="math notranslate nohighlight">\(a,b\in\mathbb{Z}\)</span>.</p>
+</aside>
+<p>The set of all rational numbers is denoted by <span class="math notranslate nohighlight">\(\mathbb{Q}\)</span>.</p>
+</section>
+<section id="real-number-representation">
+<h3>Real number representation<a class="headerlink" href="#real-number-representation" title="Permalink to this heading">#</a></h3>
+</section>
 </section>
 </section>
 
@@ -682,6 +822,12 @@ Then</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-systems">Number systems</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#positional-notation">Positional notation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#base-conversions">Base conversions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-representations">Other representations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integer-number-representation">Integer number representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rational-number-representation">Rational number representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#real-number-representation">Real number representation</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

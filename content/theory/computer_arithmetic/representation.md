@@ -21,23 +21,53 @@ Number systems are writing systems used to express numbers of a given set
 using digits and/or mathematical notation.
 
 ```{topic} Definition
-A *number system* is a set which consists of a finite quantity of unique
-symbols.
-A symbol of a number system is called a *numeral*.
-A number system should
-* be able to represent a given set of numbers fully,
+A *number system* is a mathematical writing system for expressing numbers.
+It may be represented as a set which consists of a finite quantity of unique
+symbols (called *numerals*), which should be able to
+* represent a given set of numbers fully,
 * represent each number in the set of numbers uniquely, and
 * reflect any algebraic or arithmetic structure imposed on the set.
 ```
 
-```{topic} Definition
-Let $b \in \mathbb{N}$.
-A *base-$b$* number system consists of $b$ numerals which correspond to
-$0$ and the first $b-1$ natural numbers, that is, $\{0,1,2,\dotsc,b-1\}$.
-The number $b$ is called the *radix* of the number system.
+Some number systems (e.g., Egyptian, Mayan) use pictures to represent numerals,
+while others (e.g., Roman, Japanese) use alphabet letters to represent numerals.
+The most commonly used numerals $0,1,2,3,4,5,6,7,8,9$ are called *Arabic
+numerals*, which originally developed from the Hindu-Arabic numeral system.
+
+```{topic} Example
+  The Roman numerals represent natural numbers as a combination of letters from
+  the Latin alphabet:
+  \begin{equation*}
+    \begin{array}{c c c c c c c}
+      \text{I} & \text{V} & \text{X} & \text{L} & \text{C} & \text{M} \\
+      1 & 5 & 10 & 50 & 100 & 1000
+    \end{array}
+  \end{equation*}
+  The first five natural numbers $1,2,3,4,5$ would be represented as I, II, III,
+  IV, V.
 ```
 
-Some well-known examples of number systems are:
+```{topic} Definition
+  A *base-$b$* number system consists of a set of $b$ numerals
+  $\{d_1,d_2,\dotsc,d_b\}$ called *digits*.
+```
+
+```{note}
+The term *digit* is borrowed from the Latin word *digitus*, referring to a
+"finger, toe, or finger's breadth as a unit of measure", with fingers or
+toes being one of humanity's first counting aides.
+```
+
+The *radix* $r$ is the number of unique digits, including zero, that number
+system uses to represent numbers.
+If we have a negative base, that is, $b < 0$, then we let $r = \lvert b\rvert$.
+
+Usually, in an Arabic numeral based system, the digits $\{d_1, d_2, \dotsc,
+d_b\}$ correspond to $0$ and the first $b-1$ natural numbers, that is,
+$\{0,1,2,\dotsc,b-1\}$. 
+
+```{topic} Example
+Some well-known examples of Arabic numeral based number systems are:
 * The *decimal number system* is a base-$10$ numeral system with
   base symbols $\mathbb{D} \equiv \{0,1,2,3,4,5,6,7,8,9\}$.
 * The base-$2$ number system consisting of the numerals $\mathbb{B} \equiv
@@ -47,9 +77,11 @@ Some well-known examples of number systems are:
   is called the *hexadecimal number system*.
 * The base-$8$ number system $\mathbb{O}$ with $\{0,1,2,3,4,5,6,7\}$
   as its base symbols is called the *octal number system*.
+```
 
 ```{note}
-  Our numerals must respect some type of ordering, which is
+  If the numbers we want to represent obey some type of ordering, then the
+  numerals of the number system must also respect the same ordering, which is
   implied by the correspondence between the numerals of the number system to
   the natural numbers.
 ```
@@ -105,19 +137,19 @@ a base-$b$ number system as
 ```
 where $c_j \in \{0, 1, \dotsc, b-1\}$ with $j \in \{0,1,2,\dotsc,m\}$, $c_m \neq
 0$ and $b^0 = 1$.
-```{note}
-  The coefficients $c_j$ are called *digits*.
-  It is borrowd from the Latin word *digitus*, referring to a "finger,
-  toe, or finger's breadth as a unit of measure", with fingers or
-  toes being one of humanity's first counting aides.
-```
+
 The representation {eq}`eqn:positional-representation` may be shortened to the
 notation
 ```{math}
 :label: eqn:positional-notation
-  n = c_mc_{m-1}\cdots c_2c_1c_0
+  n = c_mc_{m-1}\dotsm c_2c_1c_0
 ```
 which is the most common notation when we represent numbers.
+
+```{note}
+The shortened positional representation $c_mc_{m-1}\dotsm c_2c_1c_0$ represents
+the sequence of digits, not multiplication.
+```
 
 The representation {eq}`eqn:positional-notation` is read right-to-left, starting
 from $c_0$ (called the *least-significant digit*) and ending with $c_m$
@@ -158,27 +190,29 @@ As this previous example has shown, confusion might arise in reading number
 representations. The representation $10111$ is the number $23$ in binary, but
 also the number $10111$ in the decimal number system.
 We distinguish the representation of the number by writing the base as a
-subscript after the representation, that is, $n_b$ where $n$ is the number and
+subscript after the representation, that is, 
+\begin{equation*}
+  n_b = (c_mc_{m-1}\dotsm c_2c_1c_0)_b,
+\end{equation*}
+where $n$ is the number, $c_j$ ($j \in \{1,2,\dotsc,m\}$) are the digits, and
 $b$ is the base of the specific number system.
+
 Thus, in the last example, we could write $23_{10} = 10111_{2}$ which clarifies
 that $10111$ is the binary representation of the number $23$ in the decimal
 number system, and not the number $10111$ in the decimal number system.
 Since the decimal number system is the most widely used, the subscript is often
 not written for decimal numbers.
 
+
 ## Base conversions
 Conversion from decimal to any of the other important number systems (binary,
 hexadecimal, octal) are done via repeated integer division.
-Recall that any positive integer $n$ may be represented as $n = q \times b + r$
-where $q$ is a positive integer called the *quotient* and $r$ is a positive
-integer called the *remainder*.
+Recall that any natural number $n$ may be represented as $n = q \times b + r$
+where $q$ is a natural number called the *quotient* and $r$ is a natural number 
+called the *remainder*.
 The algorithm is as follows:
 * divide the decimal number successively by $b$,
 * the remainders of the division are the coefficients of $b^0,\ b^1,\ b^2,\ \dotsc$ (in that order).
-
-Conversion from a number system (binary, hexadecimal, octal) to decimal is done
-by writing the number in positional representation
-{eq}`eqn:positional-representation` and evaluating accordingly.
 
 ```{topic} Example
   Consider $456_{10}$.
@@ -234,6 +268,11 @@ by writing the number in positional representation
   Therefore, $456_{10} = 710_{8}$.
 ```
 
+Conversion from a number system (binary, hexadecimal, octal) to decimal is done
+by writing the number in positional representation
+{eq}`eqn:positional-representation` and evaluating accordingly.
+
+
 ```{topic} Example
   Consider $10101010_2$.
   Then
@@ -255,4 +294,99 @@ by writing the number in positional representation
     &= 48153_{10}
   \end{align*}
 ```
+
+## Other representations
+
+In the previous section, we saw how we could represent natural numbers using the
+positional notation that we introduced, and how we could convert the
+representation of such natural numbers in different bases.
+
+The question arises:
+> How do we represent other types of numbers (e.g., integer, rational, or real
+> numbers) in this positional notation?
+
+### Integer number representation
+
+The number zero, denoted by $0$, is the unique number such that
+\begin{equation*}
+    n + 0 = 0 + n = n,
+\end{equation*}
+for all natural numbers $n \in \mathbb{N}$.
+```{note}
+  This is the algebraic definition of zero.
+  In the algebraic context, zero is called the *additive identity*.
+```
+
+```{note}
+  The number zero is not necessarily the same as the digit zero. 
+  The digit zero is used to represent the "skipping" of a position in positional
+  number systems.
+```
+
+The negative natural numbers may be defined as the set of numbers obtained from
+the natural numbers by appending the symbol $-$ left of the most-significant
+digit, that is,
+\begin{equation*}
+  \mathbb{N}^- = \{ n \in \mathbb{N} \mid -n\} = \{-1,-2,-3,\dotsc\}.
+\end{equation*}
+
+```{note}
+  The definition of negative numbers is actually more involved, but ours will
+  suffice for talking about integers.
+```
+
+To distinguish the natural numbers from the negative natural numbers even more,
+we may also write the natural numbers as follows:
+\begin{equation*}
+  \mathbb{N}^+ = \{ n \in \mathbb{N} \mid +n\} = \{+1, +2, +3, \dotsc\}.
+\end{equation*}
+
+```{topic} Definition
+  The attribute of a number being written either as $0$, or with a $+$ or $-$
+  added left of the most-significant digit, is called its *sign*.
+```
+
+```{topic} Definition.
+  An *integer* is a number that can either be 
+  * a zero (0), 
+  * a natural number $\{1,2,3,\dotsc\}$, or 
+  * a negative natural number $\{-1,-2,-3,\dotsc\}$.
+
+  The set of all integers is denoted by $\mathbb{Z}$.
+```
+
+There is an ordering of the integers given by
+\begin{equation*}
+    \dotsb < -3 < -2 < -1 < 0 < 1 < 2 < 3 < \dotsb.
+\end{equation*}
+Integers larger than zero are called *strictly positive*, and integers smaller
+than zero are called *strictly negative*.
+
+It should be easily seen that we may still use
+{eq}`eqn:positional-representation` to represent integers, but with an extra
+symbol of either $+$ and $-$, left of the most-significant digit, to represent
+whether the integer is positive or negative.
+
+```{note}
+For positive numbers, we usually omit the $+$ symbol.
+```
+
+More abstractly, we introduce the symbol $\sigma$ which may take the value of
+either $+1$ or $-1$, that is, $\sigma \in \{-1, 1\}$, which allows us to
+represent $x \in \mathbb{Z}$ as
+\begin{equation*}
+  x = \sigma(c_mc_{m-1}\dotsm c_2c_1c_0)_b.
+\end{equation*}
+
+### Rational number representation
+
+```{topic} Definition.
+  A *rational number* is a number of the form $\frac{a}{b}$ where
+  $a,b\in\mathbb{Z}$.
+
+  The set of all rational numbers is denoted by $\mathbb{Q}$.
+```
+
+
+### Real number representation
 
