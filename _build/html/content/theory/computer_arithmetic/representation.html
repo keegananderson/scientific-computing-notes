@@ -434,10 +434,10 @@ d_b\}\)</span> correspond to <span class="math notranslate nohighlight">\(0\)</s
 <p class="topic-title">Example</p>
 <p>Some well-known examples of Arabic numeral based number systems are:</p>
 <ul class="simple">
-<li><p>The <em>decimal number system</em> is a base-<span class="math notranslate nohighlight">\(10\)</span> numeral system with
-base symbols <span class="math notranslate nohighlight">\(\mathbb{D} \equiv \{0,1,2,3,4,5,6,7,8,9\}\)</span>.</p></li>
-<li><p>The base-<span class="math notranslate nohighlight">\(2\)</span> number system consisting of the numerals <span class="math notranslate nohighlight">\(\mathbb{B} \equiv
-\{0,1\}\)</span> is called the <em>binary number system</em>.</p></li>
+<li><p>The <em>decimal number system</em> <span class="math notranslate nohighlight">\(\mathbb{D}\)</span> is a base-<span class="math notranslate nohighlight">\(10\)</span> numeral system with
+numerals <span class="math notranslate nohighlight">\(\{0,1,2,3,4,5,6,7,8,9\}\)</span>.</p></li>
+<li><p>The base-<span class="math notranslate nohighlight">\(2\)</span> number system <span class="math notranslate nohighlight">\(\mathbb{B}\)</span> consisting of the numerals <span class="math notranslate nohighlight">\(\{0,1\}\)</span>
+is called the <em>binary number system</em>.</p></li>
 <li><p>The base-<span class="math notranslate nohighlight">\(16\)</span> number system <span class="math notranslate nohighlight">\(\mathbb{H}\)</span> consisting of the numerals
 <span class="math notranslate nohighlight">\(\{0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F\}\)</span>
 is called the <em>hexadecimal number system</em>.</p></li>
@@ -445,6 +445,8 @@ is called the <em>hexadecimal number system</em>.</p></li>
 as its base symbols is called the <em>octal number system</em>.</p></li>
 </ul>
 </aside>
+<p>The hexadecimal number system illustrates that we can have a mixture of alphabet
+and numeral symbols in the system.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If the numbers we want to represent obey some type of ordering, then the
@@ -452,8 +454,8 @@ numerals of the number system must also respect the same ordering, which is
 implied by the correspondence between the numerals of the number system to
 the natural numbers.</p>
 </div>
-<p>An example of a symbolic number system is the set <span class="math notranslate nohighlight">\(\{\lambda, \mu, \phi\}\)</span>, with
-the correspondence</p>
+<p>An example of a pure symbolic number system is the set <span class="math notranslate nohighlight">\(\{\lambda, \mu, \phi\}\)</span>,
+with the correspondence</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
 \lambda  \to 0, \quad \mu \to 1, \quad \phi \to 2,
@@ -462,8 +464,8 @@ the correspondence</p>
 </section>
 <section id="positional-notation">
 <h2>Positional notation<a class="headerlink" href="#positional-notation" title="Permalink to this heading">#</a></h2>
-<p>From our last example, with the number system <span class="math notranslate nohighlight">\(\{\lambda, \mu, \phi\}\)</span>,  we see
-that we can represent the numbers <span class="math notranslate nohighlight">\(0\)</span>, <span class="math notranslate nohighlight">\(1\)</span>, and <span class="math notranslate nohighlight">\(2\)</span> uniquely (as required per
+<p>With the number system <span class="math notranslate nohighlight">\(\{\lambda, \mu, \phi\}\)</span>,  we see that we can represent
+the numbers <span class="math notranslate nohighlight">\(0\)</span>, <span class="math notranslate nohighlight">\(1\)</span>, and <span class="math notranslate nohighlight">\(2\)</span> uniquely (as required per
 definition).</p>
 <p>But what if we want to represent <span class="math notranslate nohighlight">\(3\)</span>, <span class="math notranslate nohighlight">\(4\)</span>, <span class="math notranslate nohighlight">\(5\)</span>, etc?</p>
 <p>Generally, only the first <span class="math notranslate nohighlight">\(b - 1\)</span> natural numbers and zero may be represented
@@ -553,6 +555,17 @@ that <span class="math notranslate nohighlight">\(10111\)</span> is the binary r
 number system, and not the number <span class="math notranslate nohighlight">\(10111\)</span> in the decimal number system.
 Since the decimal number system is the most widely used, the subscript is often
 not written for decimal numbers.</p>
+<p>Returning to the example at the start of this section, the number system
+<span class="math notranslate nohighlight">\(\{\lambda, \mu, \phi\}\)</span>, we may write the first nine natural numbers and zero
+as</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+  0 &amp;= \lambda, &amp; 5 &amp;= \mu\phi, \\
+  1 &amp;= \mu, &amp; 6 &amp;= \phi\lambda, \\
+  2 &amp;= \phi, &amp; 7 &amp;= \phi\mu, \\
+  3 &amp;= \mu\lambda, &amp; 8 &amp;= \phi\phi, \\
+  4 &amp;= \mu\mu, &amp; 9 &amp;= \mu\lambda\lambda.
+\end{align*}\]</div>
 </section>
 <section id="base-conversions">
 <h2>Base conversions<a class="headerlink" href="#base-conversions" title="Permalink to this heading">#</a></h2>
@@ -672,11 +685,13 @@ numbers) in this positional notation?</p>
 <p>for all natural numbers <span class="math notranslate nohighlight">\(n \in \mathbb{N}\)</span>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This is the algebraic definition of zero.
-In the algebraic context, zero is called the <em>additive identity</em>.</p>
+<p>This is the group theoretic definition of zero.
+In this group theoretic approach, when we consider <span class="math notranslate nohighlight">\(\mathbb{N}\)</span> with the
+operation <span class="math notranslate nohighlight">\(+\)</span>, that is, the group <span class="math notranslate nohighlight">\((\mathbb{N}, +)\)</span>, zero is called the
+<em>additive identity</em>.</p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
 <p>The number zero is not necessarily the same as the digit zero.
 The digit zero is used to represent the “skipping” of a position in positional
 number systems.</p>
@@ -688,12 +703,24 @@ digit, that is,</p>
 \[\begin{equation*}
   \mathbb{N}^- = \{ n \in \mathbb{N} \mid -n\} = \{-1,-2,-3,\dotsc\}.
 \end{equation*}\]</div>
+<p>For any <span class="math notranslate nohighlight">\(n \in \mathbb{N}\)</span>, the corresponding negative natural number <span class="math notranslate nohighlight">\(-n\)</span>
+satisfies the property that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  n + (-n) = (-n) + n = 0.
+\end{equation*}\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>From a group theoretic perspective, when we consider <span class="math notranslate nohighlight">\(\mathbb{N}\)</span> with the
+operation <span class="math notranslate nohighlight">\(+\)</span>, that is, the group <span class="math notranslate nohighlight">\((\mathbb{N}, +)\)</span>, negative natural numbers
+are called <em>additive inverses</em>.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The definition of negative numbers is actually more involved, but ours will
 suffice for talking about integers.</p>
 </div>
-<p>To distinguish the natural numbers from the negative natural numbers even more,
+<p>To distinguish the natural numbers from the negative natural numbers,
 we may also write the natural numbers as follows:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
@@ -741,10 +768,79 @@ represent <span class="math notranslate nohighlight">\(x \in \mathbb{Z}\)</span>
 <h3>Rational number representation<a class="headerlink" href="#rational-number-representation" title="Permalink to this heading">#</a></h3>
 <aside class="topic">
 <p class="topic-title">Definition.</p>
-<p>A <em>rational number</em> is a number of the form <span class="math notranslate nohighlight">\(\frac{a}{b}\)</span> where
-<span class="math notranslate nohighlight">\(a,b\in\mathbb{Z}\)</span>.</p>
+<p>A <em>rational number</em> is a number of the form <span class="math notranslate nohighlight">\(\frac{a}{b}\)</span>, where
+<span class="math notranslate nohighlight">\(a,b\in\mathbb{Z}\)</span> with <span class="math notranslate nohighlight">\(b \neq 0\)</span>.</p>
 <p>The set of all rational numbers is denoted by <span class="math notranslate nohighlight">\(\mathbb{Q}\)</span>.</p>
 </aside>
+<p>Note that if <span class="math notranslate nohighlight">\(\lvert a\rvert &gt; \lvert b\rvert &gt; 0\)</span>, then</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  1 &lt; \frac{\lvert a\rvert}{\lvert b\rvert} =
+  \left\lvert\frac{a}{b}\right\rvert.
+\end{equation*}\]</div>
+<p>However, when the opposite is true, that is, <span class="math notranslate nohighlight">\(0 &lt; \lvert a\rvert &lt; \lvert
+b\rvert\)</span>, then we obtain</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  0 &lt; \frac{\lvert a\rvert}{\lvert b\rvert} &lt; 1
+\end{equation*}\]</div>
+<p>and since <span class="math notranslate nohighlight">\(\frac{\lvert a\rvert}{\lvert b\rvert} = \left\lvert
+\frac{a}{b}\right\rvert\)</span>, it follows that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  0 &lt; \left\lvert \frac{a}{b}\right\rvert &lt; 1.
+\end{equation*}\]</div>
+<p>For the first case, we may then represent the rational number in the so-called
+<em>mixed numeral</em> form</p>
+<div class="math notranslate nohighlight" id="equation-eqn-mixed-numeral-rational">
+<span class="eqno">(3)<a class="headerlink" href="#equation-eqn-mixed-numeral-rational" title="Permalink to this equation">#</a></span>\[  c\,\frac{d}{b},\]</div>
+<p>where <span class="math notranslate nohighlight">\(c \in \mathbb{Z}\)</span>, <span class="math notranslate nohighlight">\(0 &lt; \lvert c\rvert &lt; \lvert b\rvert\)</span>, and <span class="math notranslate nohighlight">\(c\times d
+= a\)</span>.
+Rational numbers that are in the form of equation
+<a class="reference internal" href="#equation-eqn-mixed-numeral-rational">(3)</a> are called <em>improper fractions</em>, while those
+that are not in the form of <a class="reference internal" href="#equation-eqn-mixed-numeral-rational">(3)</a> are called <em>proper
+fractions</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the mixed numeral form, we refer to <span class="math notranslate nohighlight">\(c\)</span> as the <em>integer part</em> of the number,
+and <span class="math notranslate nohighlight">\(\frac{d}{b}\)</span> as the <em>fractional part</em> of the number.
+If <span class="math notranslate nohighlight">\(x\)</span> is a improper fraction, we some times use the notation <span class="math notranslate nohighlight">\([x]\)</span> for the
+integer part, and the notation <span class="math notranslate nohighlight">\(\{x\}\)</span> for the fractional part.</p>
+</div>
+<p>What equation <a class="reference internal" href="#equation-eqn-mixed-numeral-rational">(3)</a> also illustrates, is that we need
+only concern ourselves with the representation of proper fractions, since
+improper fractions are a combination of integers with proper fractions, and we
+have already discussed the representation of integers.</p>
+<p>Because proper fractions are situated between 0 and 1, we see that we cannot
+apply equations <a class="reference internal" href="#equation-eqn-positional-representation">(1)</a> and
+<a class="reference internal" href="#equation-eqn-positional-notation">(2)</a> as is, since the digits in each position are
+multiples of positive powers of the basis number <span class="math notranslate nohighlight">\(b\)</span>.
+We can also not let the <span class="math notranslate nohighlight">\(c_j\)</span> be something other than natural number between <span class="math notranslate nohighlight">\(0\)</span>
+and <span class="math notranslate nohighlight">\(b - 1\)</span>, due to our definition.</p>
+<p>Therefore, we need to extend our positional notation to allow for non-integer
+numbers.
+If <span class="math notranslate nohighlight">\(x \in \mathbb{Q}\)</span>, with <span class="math notranslate nohighlight">\(0 &lt; \lvert x \rvert &lt; 1\)</span>, then we may represent it
+by</p>
+<div class="math notranslate nohighlight" id="equation-eqn-positional-representation-rational">
+<span class="eqno">(4)<a class="headerlink" href="#equation-eqn-positional-representation-rational" title="Permalink to this equation">#</a></span>\[  x = \frac{d_1}{b^1} + \frac{d_2}{b^2} + \dotsb + \frac{d_k}{b^k} =
+  \sum_{j = 1}^k d_jb^{-j},\]</div>
+<p>where <span class="math notranslate nohighlight">\(k \in \mathbb{N}\)</span> and <span class="math notranslate nohighlight">\(d_j \in \{0,1,2,\dotsc,b - 1\}\)</span> (<span class="math notranslate nohighlight">\(j \in
+\{1,2,\dotsc,k\}\)</span>).
+The abbreviated notation for <a class="reference internal" href="#equation-eqn-positional-representation-rational">(4)</a>
+introduces the <em>radix point</em> to distinguish the integer part from the fractional
+part:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-positional-notation-rational">
+<span class="eqno">(5)<a class="headerlink" href="#equation-eqn-positional-notation-rational" title="Permalink to this equation">#</a></span>\[  x =\ .d_1d_2\dotsm d_k.\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some times the abbreviated notation <a class="reference internal" href="#equation-eqn-positional-notation-rational">(5)</a>
+includes a digit <span class="math notranslate nohighlight">\(c_0\)</span> before the radix point to better differentiate between
+the integer and fractional parts of the number:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    x = c_0.d_1d_2\dotsm d_k.
+  \end{equation*}\]</div>
+</div>
 </section>
 <section id="real-number-representation">
 <h3>Real number representation<a class="headerlink" href="#real-number-representation" title="Permalink to this heading">#</a></h3>

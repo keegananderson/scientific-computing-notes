@@ -6,7 +6,7 @@ Any algorithm in Scientific Computing, at its core, relies on the representation
 of numbers on a computing device and then understanding how arithmetic and/or
 algebraic operations are impacted by the specific representation.
 
-Mathematically, numbers are elements of any of the following sets: 
+Mathematically, numbers are elements of any of the following sets:
 $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \subset \mathbb{C}$.
 
 These sets usually have some algebraic structure imposed on them in the form of
@@ -64,20 +64,23 @@ If we have a negative base, that is, $b < 0$, then we let $r = \lvert b\rvert$.
 
 Usually, in an Arabic numeral based system, the digits $\{d_1, d_2, \dotsc,
 d_b\}$ correspond to $0$ and the first $b-1$ natural numbers, that is,
-$\{0,1,2,\dotsc,b-1\}$. 
+$\{0,1,2,\dotsc,b-1\}$.
 
 ```{topic} Example
 Some well-known examples of Arabic numeral based number systems are:
-* The *decimal number system* is a base-$10$ numeral system with
-  base symbols $\mathbb{D} \equiv \{0,1,2,3,4,5,6,7,8,9\}$.
-* The base-$2$ number system consisting of the numerals $\mathbb{B} \equiv
-  \{0,1\}$ is called the *binary number system*.
+* The *decimal number system* $\mathbb{D}$ is a base-$10$ numeral system with
+  numerals $\{0,1,2,3,4,5,6,7,8,9\}$.
+* The base-$2$ number system $\mathbb{B}$ consisting of the numerals $\{0,1\}$
+  is called the *binary number system*.
 * The base-$16$ number system $\mathbb{H}$ consisting of the numerals
   $\{0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F\}$
   is called the *hexadecimal number system*.
 * The base-$8$ number system $\mathbb{O}$ with $\{0,1,2,3,4,5,6,7\}$
   as its base symbols is called the *octal number system*.
 ```
+
+The hexadecimal number system illustrates that we can have a mixture of alphabet
+and numeral symbols in the system.
 
 ```{note}
   If the numbers we want to represent obey some type of ordering, then the
@@ -86,8 +89,8 @@ Some well-known examples of Arabic numeral based number systems are:
   the natural numbers.
 ```
 
-An example of a symbolic number system is the set $\{\lambda, \mu, \phi\}$, with
-the correspondence
+An example of a pure symbolic number system is the set $\{\lambda, \mu, \phi\}$,
+with the correspondence
 \begin{equation*}
 \lambda  \to 0, \quad \mu \to 1, \quad \phi \to 2,
 \end{equation*}
@@ -96,8 +99,8 @@ which implies $\lambda < \mu < \phi$.
 
 ## Positional notation
 
-From our last example, with the number system $\{\lambda, \mu, \phi\}$,  we see
-that we can represent the numbers $0$, $1$, and $2$ uniquely (as required per
+With the number system $\{\lambda, \mu, \phi\}$,  we see that we can represent
+the numbers $0$, $1$, and $2$ uniquely (as required per
 definition).
 
 But what if we want to represent $3$, $4$, $5$, etc?
@@ -108,7 +111,7 @@ The problem then is to represent numbers larger (or smaller in the sense of
 fractions or negative numbers) than those that may be representated by the base
 numerals.
 
-We would either have to 
+We would either have to
 * introduce more symbols, which could lead to an infinite
   number of symbols since the natural numbers $\mathbb{N}$ is an infinite set
   (which contradicts our definition of a number system), or
@@ -190,7 +193,7 @@ As this previous example has shown, confusion might arise in reading number
 representations. The representation $10111$ is the number $23$ in binary, but
 also the number $10111$ in the decimal number system.
 We distinguish the representation of the number by writing the base as a
-subscript after the representation, that is, 
+subscript after the representation, that is,
 \begin{equation*}
   n_b = (c_mc_{m-1}\dotsm c_2c_1c_0)_b,
 \end{equation*}
@@ -203,12 +206,23 @@ number system, and not the number $10111$ in the decimal number system.
 Since the decimal number system is the most widely used, the subscript is often
 not written for decimal numbers.
 
+Returning to the example at the start of this section, the number system
+$\{\lambda, \mu, \phi\}$, we may write the first nine natural numbers and zero
+as
+\begin{align*}
+  0 &= \lambda, & 5 &= \mu\phi, \\
+  1 &= \mu, & 6 &= \phi\lambda, \\
+  2 &= \phi, & 7 &= \phi\mu, \\
+  3 &= \mu\lambda, & 8 &= \phi\phi, \\
+  4 &= \mu\mu, & 9 &= \mu\lambda\lambda.
+\end{align*}
+
 
 ## Base conversions
 Conversion from decimal to any of the other important number systems (binary,
 hexadecimal, octal) are done via repeated integer division.
 Recall that any natural number $n$ may be represented as $n = q \times b + r$
-where $q$ is a natural number called the *quotient* and $r$ is a natural number 
+where $q$ is a natural number called the *quotient* and $r$ is a natural number
 called the *remainder*.
 The algorithm is as follows:
 * divide the decimal number successively by $b$,
@@ -313,12 +327,14 @@ The number zero, denoted by $0$, is the unique number such that
 \end{equation*}
 for all natural numbers $n \in \mathbb{N}$.
 ```{note}
-  This is the algebraic definition of zero.
-  In the algebraic context, zero is called the *additive identity*.
+  This is the group theoretic definition of zero.
+  In this group theoretic approach, when we consider $\mathbb{N}$ with the
+  operation $+$, that is, the group $(\mathbb{N}, +)$, zero is called the
+  *additive identity*.
 ```
 
-```{note}
-  The number zero is not necessarily the same as the digit zero. 
+```{warning}
+  The number zero is not necessarily the same as the digit zero.
   The digit zero is used to represent the "skipping" of a position in positional
   number systems.
 ```
@@ -330,12 +346,24 @@ digit, that is,
   \mathbb{N}^- = \{ n \in \mathbb{N} \mid -n\} = \{-1,-2,-3,\dotsc\}.
 \end{equation*}
 
+For any $n \in \mathbb{N}$, the corresponding negative natural number $-n$
+satisfies the property that
+\begin{equation*}
+  n + (-n) = (-n) + n = 0.
+\end{equation*}
+
+```{note}
+  From a group theoretic perspective, when we consider $\mathbb{N}$ with the
+  operation $+$, that is, the group $(\mathbb{N}, +)$, negative natural numbers
+  are called *additive inverses*.
+```
+
 ```{note}
   The definition of negative numbers is actually more involved, but ours will
   suffice for talking about integers.
 ```
 
-To distinguish the natural numbers from the negative natural numbers even more,
+To distinguish the natural numbers from the negative natural numbers,
 we may also write the natural numbers as follows:
 \begin{equation*}
   \mathbb{N}^+ = \{ n \in \mathbb{N} \mid +n\} = \{+1, +2, +3, \dotsc\}.
@@ -347,9 +375,9 @@ we may also write the natural numbers as follows:
 ```
 
 ```{topic} Definition.
-  An *integer* is a number that can either be 
-  * a zero (0), 
-  * a natural number $\{1,2,3,\dotsc\}$, or 
+  An *integer* is a number that can either be
+  * a zero (0),
+  * a natural number $\{1,2,3,\dotsc\}$, or
   * a negative natural number $\{-1,-2,-3,\dotsc\}$.
 
   The set of all integers is denoted by $\mathbb{Z}$.
@@ -381,12 +409,86 @@ represent $x \in \mathbb{Z}$ as
 ### Rational number representation
 
 ```{topic} Definition.
-  A *rational number* is a number of the form $\frac{a}{b}$ where
-  $a,b\in\mathbb{Z}$.
+  A *rational number* is a number of the form $\frac{a}{b}$, where
+  $a,b\in\mathbb{Z}$ with $b \neq 0$.
 
   The set of all rational numbers is denoted by $\mathbb{Q}$.
 ```
 
+Note that if $\lvert a\rvert > \lvert b\rvert > 0$, then
+\begin{equation*}
+  1 < \frac{\lvert a\rvert}{\lvert b\rvert} =
+  \left\lvert\frac{a}{b}\right\rvert.
+\end{equation*}
+However, when the opposite is true, that is, $0 < \lvert a\rvert < \lvert
+b\rvert$, then we obtain
+\begin{equation*}
+  0 < \frac{\lvert a\rvert}{\lvert b\rvert} < 1
+\end{equation*}
+and since $\frac{\lvert a\rvert}{\lvert b\rvert} = \left\lvert
+\frac{a}{b}\right\rvert$, it follows that
+\begin{equation*}
+  0 < \left\lvert \frac{a}{b}\right\rvert < 1.
+\end{equation*}
+For the first case, we may then represent the rational number in the so-called
+*mixed numeral* form
+```{math}
+:label: eqn:mixed-numeral-rational
+  c\,\frac{d}{b},
+```
+where $c \in \mathbb{Z}$, $0 < \lvert c\rvert < \lvert b\rvert$, and $c\times d
+= a$.
+Rational numbers that are in the form of equation
+{eq}`eqn:mixed-numeral-rational` are called *improper fractions*, while those
+that are not in the form of {eq}`eqn:mixed-numeral-rational` are called *proper
+fractions*.
+
+```{note}
+In the mixed numeral form, we refer to $c$ as the *integer part* of the number,
+and $\frac{d}{b}$ as the *fractional part* of the number.
+If $x$ is a improper fraction, we some times use the notation $[x]$ for the
+integer part, and the notation $\{x\}$ for the fractional part.
+```
+
+What equation {eq}`eqn:mixed-numeral-rational` also illustrates, is that we need
+only concern ourselves with the representation of proper fractions, since
+improper fractions are a combination of integers with proper fractions, and we
+have already discussed the representation of integers.
+
+Because proper fractions are situated between 0 and 1, we see that we cannot
+apply equations {eq}`eqn:positional-representation` and
+{eq}`eqn:positional-notation` as is, since the digits in each position are
+multiples of positive powers of the basis number $b$.
+We can also not let the $c_j$ be something other than natural number between $0$
+and $b - 1$, due to our definition.
+
+Therefore, we need to extend our positional notation to allow for non-integer
+numbers.
+If $x \in \mathbb{Q}$, with $0 < \lvert x \rvert < 1$, then we may represent it
+by
+```{math}
+  :label: eqn:positional-representation-rational
+  x = \frac{d_1}{b^1} + \frac{d_2}{b^2} + \dotsb + \frac{d_k}{b^k} =
+  \sum_{j = 1}^k d_jb^{-j},
+```
+where $k \in \mathbb{N}$ and $d_j \in \{0,1,2,\dotsc,b - 1\}$ ($j \in
+\{1,2,\dotsc,k\}$).
+The abbreviated notation for {eq}`eqn:positional-representation-rational`
+introduces the *radix point* to distinguish the integer part from the fractional
+part:
+```{math}
+  :label: eqn:positional-notation-rational
+  x =\ .d_1d_2\dotsm d_k.
+```
+
+```{note}
+  Some times the abbreviated notation {eq}`eqn:positional-notation-rational`
+  includes a digit $c_0$ before the radix point to better differentiate between
+  the integer and fractional parts of the number:
+  \begin{equation*}
+    x = c_0.d_1d_2\dotsm d_k.
+  \end{equation*}
+```
 
 ### Real number representation
 
